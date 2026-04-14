@@ -13,11 +13,6 @@ use Illuminate\Routing\Router;
 
 class CrmServiceProvider extends ServiceProvider
 {
-    /**
-     * The filters base class name.
-     *
-     * @var array
-     */
     protected $middleware = [
         'Crm' => [
             'ContactSidebarMenu' => 'ContactSidebarMenu',
@@ -25,11 +20,6 @@ class CrmServiceProvider extends ServiceProvider
         ],
     ];
 
-    /**
-     * Boot the application events.
-     *
-     * @return void
-     */
     public function boot()
     {
         $this->registerTranslations();
@@ -37,82 +27,107 @@ class CrmServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-        $this->registerScheduleCommands();
 
         $this->registerMiddleware($this->app['router']);
-
-        // Only run view composer if users table exists
-        if (Schema::hasTable('users')) {
-            View::composer(
-                ['crm::layouts.nav'],
-                function ($view) {
-                    $commonUtil = new Util();
-
-                    // Only check if user is logged in
-                    if(auth()->check()) {
-                        $is_admin = $commonUtil->is_admin(auth()->user(), auth()->user()->business_id);
-                        $view->with('__is_admin', $is_admin);
-                    } else {
-                        $view->with('__is_admin', false);
-                    }
-                }
-            );
-        }
+        $this->registerViewComposers();
+        $this->registerScheduleCommands();
     }
 
     /**
-     * Register the filters.
-     *
-     * @param  Router $router
-     * @return void
+     * SAFE VIEW COMPOSER (NO CRASH DURING BUILD)
      */
+    protected function registerViewComposers()
+    {
+        if (!Schema::hasTable('users')) {
+            return;
+        }
+
+        View::composer(['crm::layouts.nav'], function ($view) {
+
+            $commonUtil = new Util();
+
+            try {
+                if (auth()->check()) {
+                    $is_admin = $commonUtil->is_admin(
+                        auth()->user(),
+                        auth()->user()->business_id
+                    );
+
+                    $view->with('__is_admin', $is_admin);
+                } else {
+                    $view->with('__is_admin', false);
+                }
+            } catch (\Exception $e) {
+                $view->with('__is_admin', false);
+            }
+        });
+    }
+
+    /**
+     * SAFE SCHEDULER REGISTRATION (NO DB CALL DURING BOOT)
+     */
+    public function registerScheduleCommands()
+    {
+        $this->app->booted(function () {
+
+            try {
+                // Prevent build-time execution
+                if (app()->runningInConsole() && !app()->environment('local')) {
+                    return;
+                }
+
+                if (!Schema::hasTable('system')) {
+                    return;
+                }
+
+                $moduleUtil = app(ModuleUtil::class);
+
+                $is_installed = $moduleUtil->isModuleInstalled(config('crm.name'));
+
+                if ($is_installed) {
+                    $schedule = $this->app->make(Schedule::class);
+
+                    $schedule->command('pos:sendScheduleNotification')->everyMinute();
+                    $schedule->command('pos:createRecursiveFollowup')->daily();
+                }
+
+            } catch (\Exception $e) {
+                // silently fail during build
+            }
+        });
+    }
+
     public function registerMiddleware(Router $router)
     {
         foreach ($this->middleware as $module => $middlewares) {
             foreach ($middlewares as $name => $middleware) {
                 $class = "Modules\\{$module}\\Http\\Middleware\\{$middleware}";
-
                 $router->aliasMiddleware($name, $class);
             }
         }
     }
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
         $this->registerCommands();
     }
 
-    /**
-     * Register config.
-     *
-     * @return void
-     */
     protected function registerConfig()
     {
         $this->publishes([
             __DIR__ . '/../Config/config.php' => config_path('crm.php'),
         ], 'config');
+
         $this->mergeConfigFrom(
             __DIR__ . '/../Config/config.php',
             'crm'
         );
     }
 
-    /**
-     * Register views.
-     *
-     * @return void
-     */
     public function registerViews()
     {
         $viewPath = resource_path('views/modules/crm');
-
         $sourcePath = __DIR__ . '/../Resources/views';
 
         $this->publishes([
@@ -124,11 +139,6 @@ class CrmServiceProvider extends ServiceProvider
         }, config('view.paths')), [$sourcePath]), 'crm');
     }
 
-    /**
-     * Register translations.
-     *
-     * @return void
-     */
     public function registerTranslations()
     {
         $langPath = resource_path('lang/modules/crm');
@@ -140,11 +150,6 @@ class CrmServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * Register an additional directory of factories.
-     *
-     * @return void
-     */
     public function registerFactories()
     {
         if (!app()->environment('production') && $this->app->runningInConsole()) {
@@ -152,45 +157,16 @@ class CrmServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
     public function provides()
     {
         return [];
     }
 
-    /**
-     * Register commands.
-     *
-     * @return void
-     */
     protected function registerCommands()
     {
         $this->commands([
             \Modules\Crm\Console\SendScheduleNotification::class,
             \Modules\Crm\Console\CreateRecursiveFollowup::class,
         ]);
-    }
-
-    public function registerScheduleCommands()
-    {
-        $env = config('app.env');
-        $module_util = new ModuleUtil();
-
-        // Only check module if 'system' table exists
-        if ($env === 'live' && Schema::hasTable('system')) {
-            $is_installed = $module_util->isModuleInstalled(config('crm.name'));
-
-            if ($is_installed) {
-                $this->app->booted(function () {
-                    $schedule = $this->app->make(Schedule::class);
-                    $schedule->command('pos:sendScheduleNotification')->everyMinute();
-                    $schedule->command('pos:createRecursiveFollowup')->daily();
-                });
-            }
-        }
     }
 }
