@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # Laravel PHP-FPM Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: aadhira-erp-app
+    container_name: aadhira-erp-app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    volumes:
+      - ./:/var/web
+      - /var/web/vendor
+    networks:
+      - erp-network
+
+  # Nginx Web Server Service
+  webserver:
+    image: nginx:alpine
+    container_name: aadhira-erp-webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/web
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - erp-network
+    depends_on:
+      - app
+
+  # Database Service (MariaDB 10.4 to match local version)
+  db:
+    image: mariadb:10.4
+    container_name: aadhira-erp-db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: aadhira_erp
+      MYSQL_ROOT_PASSWORD: secure_root_password_here
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - erp-network
+
+# Docker Networks
+networks:
+  erp-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  dbdata:
+    driver: local

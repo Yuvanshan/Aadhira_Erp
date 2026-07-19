@@ -1,0 +1,292 @@
+[33mcommit 080a9c29b9dcf931b829ab9ecc2718c66d151343[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Merge: a06905b6 440ae71c
+Author: Yuvanshan <yuvanshan875@gmail.com>
+Date:   Sat Jul 18 20:36:01 2026 +0530
+
+    Merge branch 'main' of https://github.com/Yuvanshan/Aadhira_Erp
+
+ .gitattributes                                     |      5 [32m+[m
+ .htaccess                                          |      5 [32m+[m
+ .php-version                                       |      1 [32m+[m
+ .php_cs                                            |     24 [32m+[m
+ .prettierrc                                        |      6 [32m+[m
+ .rnd                                               |    Bin [31m0[m -> [32m1024[m bytes
+ .shift                                             |      4 [32m+[m
+ Modules/Accounting/.DS_Store                       |    Bin [31m0[m -> [32m6148[m bytes
+ Modules/Accounting/Config/.gitkeep                 |      0
+ Modules/Accounting/Config/config.php               |      8 [32m+[m
+ Modules/Accounting/Console/.gitkeep                |      0
+ Modules/Accounting/Database/Migrations/.gitkeep    |      0
+ ...07_07_093258_create_chart_of_accounts_table.php |     38 [32m+[m
+ ...9_07_07_093648_create_journal_entries_table.php |     60 [32m+[m
+ ...019_07_07_110645_create_payment_types_table.php |     56 [32m+[m
+ ...ct_and_location_id_to_journal_entries_table.php |     48 [32m+[m
+ ..._add_business_id_to_chart_of_accounts_table.php |     32 [32m+[m
+ ...2_01_17_202319_create_payment_details_table.php |     41 [32m+[m
+ .../2022_01_19_034231_create_countries_table.php   |    285 [32m+[m
+ .../2022_02_01_031031_create_transfers_table.php   |     36 [32m+[m
+ .../2022_02_03_215602_create_budgets_table.php     |     46 [32m+[m
+ ..._opening_balance_to_chart_of_accounts_table.php |     32 [32m+[m
+ ..._add_currency_id_to_chart_of_accounts_table.php |     32 [32m+[m
+ ..._payment_type_id_to_chart_of_accounts_table.php |     32 [32m+[m
+ ...09_125328_create_account_detail_types_table.php |     36 [32m+[m
+ ..._02_09_223848_create_account_subtypes_table.php |     37 [32m+[m
+ ...d_detail_type_id_to_chart_of_accounts_table.php |     34 [32m+[m
+ ..._add_journal_entry_id_to_transactions_table.php |     32 [32m+[m
+ ..._opening_balance_to_chart_of_accounts_table.php |     32 [32m+[m
+ ...4_11_163625_populate_account_subtypes_table.php |    168 [32m+[m
+ ..._165143_populate_account_detail_types_table.php |   1425 [32m+[m
+ ...22_06_08_105942_create_branch_capital_table.php |     38 [32m+[m
+ ...from_int_to_string_in_payment_details_table.php |     27 [32m+[m
+ Modules/Accounting/Database/Seeders/.gitkeep       |      0
+ .../Database/Seeders/AccountingDatabaseSeeder.php  |     21 [32m+[m
+ Modules/Accounting/Database/factories/.gitkeep     |      0
+ Modules/Accounting/Entities/Account.php            |    105 [32m+[m
+ Modules/Accounting/Entities/AccountDetailType.php  |     42 [32m+[m
+ Modules/Accounting/Entities/AccountSubtype.php     |     37 [32m+[m
+ Modules/Accounting/Entities/AccountTransaction.php |    130 [32m+[m
+ Modules/Accounting/Entities/AccountType.php        |     21 [32m+[m
+ Modules/Accounting/Entities/BankDetails.php        |     18 [32m+[m
+ Modules/Accounting/Entities/Barcode.php            |     15 [32m+[m
+ Modules/Accounting/Entities/BranchCapital.php      |     36 [32m+[m
+ Modules/Accounting/Entities/Brands.php             |     51 [32m+[m
+ Modules/Accounting/Entities/Budget.php             |     43 [32m+[m
+ Modules/Accounting/Entities/Business.php           |    136 [32m+[m
+ Modules/Accounting/Entities/BusinessLocation.php   |     20 [32m+[m
+ Modules/Accounting/Entities/CashRegister.php       |     32 [32m+[m
+ .../Entities/CashRegisterTransaction.php           |     15 [32m+[m
+ Modules/Accounting/Entities/Category.php           |    110 [32m+[m
+ Modules/Accounting/Entities/ChartOfAccount.php     |    134 [32m+[m
+ Modules/Accounting/Entities/ClientRelationship.php |     12 [32m+[m
+ Modules/Accounting/Entities/ClientType.php         |     12 [32m+[m
+ Modules/Accounting/Entities/Contact.php            |     32 [32m+[m
+ Modules/Accounting/Entities/ContactRestriction.php |     28 [32m+[m
+ Modules/Accounting/Entities/Country.php            |     24 [32m+[m
+ Modules/Accounting/Entities/Currency.php           |     30 [32m+[m
+ Modules/Accounting/Entities/CustomerGroup.php      |     49 [32m+[m
+ .../Accounting/Entities/DashboardConfiguration.php |      9 [32m+[m
+ Modules/Accounting/Entities/Discount.php           |     27 [32m+[m
+ Modules/Accounting/Entities/DocumentAndNote.php    |     43 [32m+[m
+ Modules/Accounting/Entities/ExpenseCategory.php    |     24 [32m+[m
+ Modules/Accounting/Entities/Gender.php             |     18 [32m+[m
+ Modules/Accounting/Entities/GroupSubTax.php        |     13 [32m+[m
+ Modules/Accounting/Entities/IncomeCategory.php     |     24 [32m+[m
+ Modules/Accounting/Entities/InvoiceLayout.php      |     50 [32m+[m
+ Modules/Accounting/Entities/InvoiceScheme.php      |     37 [32m+[m
+ Modules/Accounting/Entities/JournalEntry.php       |     52 [32m+[m
+ Modules/Accounting/Entities/KycIdentification.php  |    122 [32m+[m
+ Modules/Accounting/Entities/MaritalStatus.php      |     18 [32m+[m
+ Modules/Accounting/Entities/Media.php              |    228 [32m+[m
+ .../Accounting/Entities/NotificationTemplate.php   |    364 [32m+[m
+ Modules/Accounting/Entities/PaymentAccount.php     |     27 [32m+[m
+ Modules/Accounting/Entities/PaymentDetail.php      |     30 [32m+[m
+ Modules/Accounting/Entities/PaymentTermType.php    |     16 [32m+[m
+ Modules/Accounting/Entities/PaymentType.php        |     50 [32m+[m
+ Modules/Accounting/Entities/Printer.php            |     72 [32m+[m
+ Modules/Accounting/Entities/Product.php            |    208 [32m+[m
+ Modules/Accounting/Entities/ProductRack.php        |     15 [32m+[m
+ Modules/Accounting/Entities/ProductVariation.php   |     25 [32m+[m
+ Modules/Accounting/Entities/Profession.php         |     12 [32m+[m
+ Modules/Accounting/Entities/PurchaseLine.php       |     80 [32m+[m
+ Modules/Accounting/Entities/ReferenceCount.php     |     15 [32m+[m
+ Modules/Accounting/Entities/SellingPriceGroup.php  |     66 [32m+[m
+ .../Accounting/Entities/StockAdjustmentLine.php    |     20 [32m+[m
+ Modules/Accounting/Entities/System.php             |    168 [32m+[m
+ Modules/Accounting/Entities/TaxRate.php            |    109 [32m+[m
+ Modules/Accounting/Entities/Title.php              |     12 [32m+[m
+ Modules/Accounting/Entities/Transaction.php        |    100 [32m+[m
+ Modules/Accounting/Entities/TransactionPayment.php |    111 [32m+[m
+ .../Accounting/Entities/TransactionSellLine.php    |    110 [32m+[m
+ .../Entities/TransactionSellLinesPurchaseLines.php |     20 [32m+[m
+ Modules/Accounting/Entities/Transfer.php           |     39 [32m+[m
+ Modules/Accounting/Entities/TypesOfService.php     |     39 [32m+[m
+ Modules/Accounting/Entities/Unit.php               |     59 [32m+[m
+ Modules/Accounting/Entities/User.php               |     65 [32m+[m
+ Modules/Accounting/Entities/UserContactAccess.php  |     10 [32m+[m
+ Modules/Accounting/Entities/Variation.php          |     77 [32m+[m
+ .../Accounting/Entities/VariationGroupPrice.php    |     15 [32m+[m
+ .../Entities/VariationLocationDetails.php          |     15 [32m+[m
+ Modules/Accounting/Entities/VariationTemplate.php  |     22 [32m+[m
+ .../Accounting/Entities/VariationValueTemplate.php |     22 [32m+[m
+ Modules/Accounting/Entities/Warranty.php           |     54 [32m+[m
+ Modules/Accounting/Entities/WorkDetails.php        |     21 [32m+[m
+ Modules/Accounting/Entities/WorkStatus.php         |     22 [32m+[m
+ Modules/Accounting/Exports/AccountingExport.php    |     25 [32m+[m
+ .../Accounting/Exports/AccountingTableExport.php   |     28 [32m+[m
+ Modules/Accounting/Exports/TrialBalanceExport.php  |     25 [32m+[m
+ Modules/Accounting/Helpers/general_helper.php      |    341 [32m+[m
+ Modules/Accounting/Http/Controllers/.gitkeep       |      0
+ .../Http/Controllers/AccountingController.php      |    347 [32m+[m
+ .../Controllers/AccountingSettingsController.php   |    160 [32m+[m
+ .../AccountingTransactionController.php            |    167 [32m+[m
+ .../Http/Controllers/BudgetController.php          |    233 [32m+[m
+ .../Http/Controllers/ChartOfAccountController.php  |    339 [32m+[m
+ .../Http/Controllers/DashboardController.php       |    133 [32m+[m
+ .../Accounting/Http/Controllers/DataController.php |     70 [32m+[m
+ .../Http/Controllers/InstallController.php         |    165 [32m+[m
+ .../Http/Controllers/JournalEntryController.php    |    320 [32m+[m
+ .../Http/Controllers/MediaController.php           |     39 [32m+[m
+ .../Http/Controllers/ReconcileController.php       |    159 [32m+[m
+ .../Http/Controllers/ReportController.php          |    621 [32m+[m
+ Modules/Accounting/Http/Middleware/.gitkeep        |      0
+ Modules/Accounting/Http/Requests/.gitkeep          |      0
+ Modules/Accounting/Http/routes.php                 |    136 [32m+[m
+ Modules/Accounting/Providers/.gitkeep              |      0
+ .../Providers/AccountingServiceProvider.php        |    131 [32m+[m
+ Modules/Accounting/Resources/.DS_Store             |    Bin [31m0[m -> [32m6148[m bytes
+ Modules/Accounting/Resources/assets/.gitkeep       |      0
+ .../Accounting/Resources/assets/css/box-shadow.css |     32 [32m+[m
+ .../assets/css/plugins/bootstrap.custom.css        |    175 [32m+[m
+ .../Resources/assets/css/plugins/form-wizard.css   |    220 [32m+[m
+ .../assets/css/plugins/jquery.treegrid.css         |      6 [32m+[m
+ .../Resources/assets/css/plugins/money-fields.css  |   3451 [32m+[m
+ .../assets/css/plugins/sweetalert.custom.css       |      3 [32m+[m
+ .../Resources/assets/css/plugins/vue.custom.css    |     14 [32m+[m
+ .../Resources/assets/css/theme.custom.css          |    197 [32m+[m
+ .../Resources/assets/img/jquerytree/collapse.png   |    Bin [31m0[m -> [32m2886[m bytes
+ .../Resources/assets/img/jquerytree/expand.png     |    Bin [31m0[m -> [32m2894[m bytes
+ .../Resources/assets/img/jquerytree/file.png       |    Bin [31m0[m -> [32m342[m bytes
+ .../Resources/assets/img/jquerytree/folder.png     |    Bin [31m0[m -> [32m537[m bytes
+ .../Accounting/Resources/assets/js/accounting.js   |     64 [32m+[m
+ .../Resources/assets/js/accounting_transactions.js |      3 [32m+[m
+ Modules/Accounting/Resources/assets/js/app.js      |      0
+ .../Resources/assets/js/expense_transactions.js    |   2753 [32m+[m
+ .../Resources/assets/js/helper-functions.js        |     29 [32m+[m
+ .../Accounting/Resources/assets/js/notification.js |     15 [32m+[m
+ .../assets/js/plugins/datepicker.custom.js         |     20 [32m+[m
+ .../Resources/assets/js/plugins/form-wizard.js     |     83 [32m+[m
+ .../jquerytree/jquery.treegrid.bootstrap3.js       |      4 [32m+[m
+ .../js/plugins/jquerytree/jquery.treegrid.init.js  |      8 [32m+[m
+ .../js/plugins/jquerytree/jquery.treegrid.js       |    626 [32m+[m
+ .../assets/js/plugins/sweetalert.custom.js         |     66 [32m+[m
+ .../Resources/assets/js/purchase_payment.js        |   1174 [32m+[m
+ Modules/Accounting/Resources/assets/sass/app.scss  |      0
+ Modules/Accounting/Resources/lang/.gitkeep         |      0
+ Modules/Accounting/Resources/lang/ar/core.php      |   1040 [32m+[m
+ Modules/Accounting/Resources/lang/ar/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/ar/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/ar/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/ce/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/ce/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/ce/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/de/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/de/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/de/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/en/core.php      |   1040 [32m+[m
+ Modules/Accounting/Resources/lang/en/general.php   |     86 [32m+[m
+ Modules/Accounting/Resources/lang/en/lang.php      |   1044 [32m+[m
+ Modules/Accounting/Resources/lang/en/report.php    |     45 [32m+[m
+ Modules/Accounting/Resources/lang/es/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/es/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/es/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/fr/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/fr/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/fr/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/hi/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/hi/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/hi/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/id/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/id/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/id/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/lo/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/lo/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/lo/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/nl/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/nl/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/nl/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/ps/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/ps/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/ps/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/pt/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/pt/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/pt/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/ro/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/ro/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/ro/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/sq/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/sq/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/sq/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/tr/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/tr/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/tr/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/lang/vi/general.php   |     70 [32m+[m
+ Modules/Accounting/Resources/lang/vi/lang.php      |     35 [32m+[m
+ Modules/Accounting/Resources/lang/vi/report.php    |     58 [32m+[m
+ Modules/Accounting/Resources/views/.gitkeep        |      0
+ .../Resources/views/budget/index.blade.php         |    224 [32m+[m
+ .../budget/modals/budget_settings_modal.blade.php  |     36 [32m+[m
+ .../budget/modals/edit_monthly_modal.blade.php     |     54 [32m+[m
+ .../budget/modals/edit_quarterly_modal.blade.php   |     64 [32m+[m
+ .../budget/modals/edit_yearly_modal.blade.php      |     49 [32m+[m
+ .../views/budget/partials/monthly_view.blade.php   |     52 [32m+[m
+ .../views/budget/partials/quarterly_view.blade.php |     50 [32m+[m
+ .../views/budget/partials/yearly_view.blade.php    |     42 [32m+[m
+ .../chart_of_account/accounts_chart_pdf.blade.php  |    112 [32m+[m
+ .../views/chart_of_account/create.blade.php        |    342 [32m+[m
+ .../views/chart_of_account/edit.blade.php          |    338 [32m+[m
+ .../views/chart_of_account/index.blade.php         |    227 [32m+[m
+ .../views/chart_of_account/show.blade.php          |    218 [32m+[m
+ .../Resources/views/components/alert.blade.php     |      6 [32m+[m
+ .../Resources/views/components/avatar.blade.php    |     11 [32m+[m
+ .../Resources/views/components/box.blade.php       |     29 [32m+[m
+ .../views/components/document_help_text.blade.php  |      9 [32m+[m
+ .../components/download_action_button.blade.php    |     33 [32m+[m
+ .../views/components/dropdown_button.blade.php     |      8 [32m+[m
+ .../Resources/views/components/filters.blade.php   |     23 [32m+[m
+ .../views/components/section_header.blade.php      |      8 [32m+[m
+ .../Resources/views/components/table.blade.php     |      3 [32m+[m
+ .../views/components/tree_view_table.blade.php     |      6 [32m+[m
+ .../Resources/views/components/widget.blade.php    |     20 [32m+[m
+ .../Resources/views/dashboard/index.blade.php      |    266 [32m+[m
+ .../Resources/views/journal_entry/create.blade.php |    293 [32m+[m
+ .../Resources/views/journal_entry/edit.blade.php   |    117 [32m+[m
+ .../Resources/views/journal_entry/index.blade.php  |    279 [32m+[m
+ .../Resources/views/journal_entry/show.blade.php   |    153 [32m+[m
+ .../Resources/views/layouts/app.blade.php          |    125 [32m+[m
+ .../Resources/views/layouts/nav.blade.php          |     79 [32m+[m
+ .../layouts/partials/alert-feedback.blade.php      |     26 [32m+[m
+ .../Resources/views/layouts/partials/css.blade.php |     97 [32m+[m
+ .../views/layouts/partials/javascripts.blade.php   |    162 [32m+[m
+ .../Resources/views/layouts/plain.blade.php        |     47 [32m+[m
+ .../views/layouts/transactions_layout.blade.php    |     73 [32m+[m
+ .../Resources/views/reconcile/index.blade.php      |     75 [32m+[m
+ .../reconcile/partials/reconcile_form.blade.php    |     82 [32m+[m
+ .../partials/undo_reconcile_form.blade.php         |      7 [32m+[m
+ .../views/reconcile/start_reconcile.blade.php      |    310 [32m+[m
+ .../accounts_payable_ageing_detail.blade.php       |    223 [32m+[m
+ .../accounts_payable_ageing_detail_pdf.blade.php   |    137 [32m+[m
+ .../accounts_payable_ageing_summary.blade.php      |    174 [32m+[m
+ .../accounts_payable_ageing_summary_pdf.blade.php  |     96 [32m+[m
+ .../accounts_receivable_ageing_detail.blade.php    |    222 [32m+[m
+ ...accounts_receivable_ageing_detail_pdf.blade.php |    137 [32m+[m
+ .../accounts_receivable_ageing_summary.blade.php   |    175 [32m+[m
+ ...ccounts_receivable_ageing_summary_pdf.blade.php |     96 [32m+[m
+ .../Resources/views/report/balance_sheet.blade.php |    196 [32m+[m
+ .../views/report/balance_sheet_pdf.blade.php       |    122 [32m+[m
+ .../views/report/budget/budget_overview.blade.php  |    116 [32m+[m
+ .../report/budget/budget_overview_pdf.blade.php    |     41 [32m+[m
+ .../report/budget/partials/monthly_view.blade.php  |      3 [32m+[m
+ .../budget/partials/monthly_view_table.blade.php   |     77 [32m+[m
+ .../budget/partials/quarterly_view.blade.php       |      3 [32m+[m
+ .../budget/partials/quarterly_view_table.blade.php |     76 [32m+[m
+ .../views/report/budget_overview.blade.php         |    463 [32m+[m
+ .../Resources/views/report/cash_flow.blade.php     |    206 [32m+[m
+ .../Resources/views/report/cash_flow_pdf.blade.php |    128 [32m+[m
+ .../Resources/views/report/index.blade.php         |     46 [32m+[m
+ .../Resources/views/report/journal.blade.php       |    276 [32m+[m
+ .../Resources/views/report/journal_pdf.blade.php   |    193 [32m+[m
+ .../Resources/views/report/ledger.blade.php        |    214 [32m+[m
+ .../Resources/views/report/ledger_pdf.blade.php    |    133 [32m+[m
+ .../views/report/partials/report_css.blade.php     |      2 [32m+[m
+ .../views/report/partials/report_js.blade.php      |      3 [32m+[m
+ .../views/report/profit_and_loss.blade.php         |    206 [32m+[m
+ .../views/report/profit_and_loss_pdf.blade.php     |    130 [32m+[m
+ .../Resources/views/report/trial_balance.blade.php |    198 [32m+[m
+ .../views/report/trial_balance_pdf.blade.php       |    116 [32m+[m
+ .../settings/account_subtypes/create.blade.php     |     66 [32m+[m
+ .../views/settings/account_subtypes/edit.blade.php |     94 [32m+[m
+ .../settings/account_subtypes/index.blade.php      |    137 [32m+[m
+ .../views/settings/detail_types/create.blade.php   |     65 [32m+[m
+ .../views/settings/detail_types/edit.blade.php     |     97 [32m+[m
+ .../views/settings/detail_types/index.blade.php    |    134 [32m+[m
+ .../Resources/views

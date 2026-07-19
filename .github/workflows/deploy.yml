@@ -1,0 +1,42 @@
+name: Deploy Aadhira ERP (Windows Server)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to Windows Server via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            # Navigate to the project root directory on the Windows Server
+            cd C:\Aadhira_erp_v_1.0
+
+            # Pull latest changes from git
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Navigate to pos_system containing docker config
+            cd app\pos_system
+
+            # Build and spin up containers
+            docker-compose up -d --build
+
+            # Execute Laravel production updates inside the container
+            docker-compose exec -T app composer install --no-dev --optimize-autoloader
+            docker-compose exec -T app php artisan migrate --force
+            docker-compose exec -T app php artisan config:cache
+            docker-compose exec -T app php artisan route:cache
+            docker-compose exec -T app php artisan view:cache

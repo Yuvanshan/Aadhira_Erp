@@ -1,0 +1,197 @@
+/* ================================================
+   Accounting Navbar - CSS Reset & Fixes
+   ================================================ */
+
+/* Critical fixes for navbar alignment */
+section.no-print {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+section.no-print nav {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    display: block !important;
+}
+
+.navbar {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    clear: both !important;
+}
+
+/* Override any conflicting styles */
+.navbar * {
+    box-sizing: border-box !important;
+}
+
+.navbar .container-fluid,
+.navbar .container {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+}
+
+.navbar-header {
+    float: none !important;
+    width: auto !important;
+}
+
+.navbar-brand {
+    float: none !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.navbar-toggle {
+    float: right !important;
+    position: relative !important;
+}
+
+.navbar-collapse {
+    float: none !important;
+    width: auto !important;
+    clear: none !important;
+}
+
+.navbar-nav {
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.navbar-nav > li {
+    float: none !important;
+    list-style: none !important;
+}
+
+.navbar-nav > li > a {
+    display: inline-block !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
+
+.navbar-form {
+    float: none !important;
+    width: 100% !important;
+    padding: 10px 15px !important;
+    margin: 8px 0 !important;
+}
+
+.navbar-right {
+    float: right !important;
+}
+
+/* Clearfix */
+.navbar::before,
+.navbar::after,
+.navbar-header::before,
+.navbar-header::after,
+.navbar-collapse::before,
+.navbar-collapse::after {
+    display: table !important;
+    content: " " !important;
+}
+
+.navbar::after,
+.navbar-header::after,
+.navbar-collapse::after {
+    clear: both !important;
+}
+
+/* Ensure navbar is visible */
+.navbar {
+    visibility: visible !important;
+    display: block !important;
+    background: white !important;
+    border-bottom: 2px solid #f0f0f0 !important;
+}
+
+.navbar-default {
+    background-color: white !important;
+    border-color: #f0f0f0 !important;
+}
+
+/* Fix any Bootstrap 3 conflicts */
+@media (min-width: 768px) {
+    .navbar {
+        border-radius: 0 !important;
+    }
+    
+    .navbar-header {
+        display: inline-block !important;
+        vertical-align: middle !important;
+    }
+    
+    .navbar-collapse {
+        display: inline-block !important;
+        vertical-align: middle !important;
+        width: auto !important;
+        border-top: none !important;
+        box-shadow: none !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+    
+    .navbar-collapse.in {
+        display: inline-block !important;
+    }
+    
+    .navbar-nav {
+        display: inline-block !important;
+        vertical-align: middle !important;
+    }
+    
+    .navbar-nav > li {
+        display: inline-block !important;
+    }
+    
+    .navbar-right {
+        float: right !important;
+    }
+}
+
+/* Ensure text doesn't break */
+.navbar a,
+.navbar button,
+.navbar span {
+    white-space: nowrap !important;
+    overflow: visible !important;
+}
+
+/* Remove any inherited transforms */
+.navbar,
+.navbar *,
+.navbar::before,
+.navbar::after {
+    transform: none !important;
+}
+
+/* Ensure proper stacking context */
+.navbar {
+    z-index: 1000 !important;
+    position: relative !important;
+}
+
+/* Override grid/flex conflicts */
+.navbar.row,
+.navbar [class*="col-"] {
+    float: none !important;
+    width: auto !important;
+}
+
+/* Text alignment */
+.navbar {
+    text-align: left !important;
+}
+
+.navbar-brand {
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+}

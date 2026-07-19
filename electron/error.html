@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahdev ERP - Under Maintenance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #C8DCF0;
+            --bg-light: #DCEcF8;
+            --white: #FFFFFF;
+            --red: #E84A6F;
+            --red-dark: #C73558;
+            --blue-mid: #5B9BD5;
+            --blue-dark: #2C5F8A;
+            --text-head: #1E3A5F;
+            --text-body: #6B8CAE;
+            --screen-bg: #EEF5FC;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ── Background geometric shapes (matching reference) ── */
+        .bg-shape {
+            position: fixed;
+            pointer-events: none;
+        }
+        /* Top-left large light triangle */
+        .bg-shape-tl {
+            top: -60px; left: -60px;
+            width: 420px; height: 320px;
+            background: rgba(255,255,255,0.35);
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            border-radius: 0 0 60px 0;
+        }
+        /* Bottom-right subtle shape */
+        .bg-shape-br {
+            bottom: -40px; right: -40px;
+            width: 300px; height: 260px;
+            background: rgba(255,255,255,0.2);
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+        }
+        /* Top-right diamond accent */
+        .bg-shape-tr {
+            top: 30px; right: 80px;
+            width: 120px; height: 120px;
+            background: rgba(255,255,255,0.18);
+            transform: rotate(45deg);
+            border-radius: 10px;
+        }
+
+        /* ── Main layout ── */
+        .page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            width: 100%;
+            max-width: 1100px;
+            padding: 40px 30px;
+            position: relative;
+            z-index: 1;
+            animation: pageIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
+        }
+
+        @keyframes pageIn {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── LEFT — isometric scene ── */
+        .scene-wrap {
+            flex: 0 0 auto;
+            position: relative;
+            width: 480px;
+            height: 360px;
+        }
+
+        .scene-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        /* ── RIGHT — text content ── */
+        .content {
+            flex: 1;
+            min-width: 260px;
+            max-width: 380px;
+            animation: contentIn 1s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+        }
+
+        @keyframes contentIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .content h2 {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 700;
+            color: var(--text-head);
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .content h1 {
+            font-size: clamp(28px, 5vw, 46px);
+            font-weight: 900;
+            color: var(--text-head);
+            letter-spacing: 1px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .content p {
+            font-size: 13.5px;
+            color: var(--text-body);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .enjoy-btn {
+            display: inline-block;
+            padding: 13px 36px;
+            background: transparent;
+            border: 2.5px solid var(--red);
+            border-radius: 40px;
+            color: var(--red);
+            font-family: 'Nunito', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .enjoy-btn:hover {
+            background: var(--red);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232,74,111,0.35);
+        }
+
+        /* ── Gear animation ── */
+        .gear-spin { animation: gearSpin 6s linear infinite; transform-origin: center; }
+        .gear-spin-rev { animation: gearSpin 5s linear infinite reverse; transform-origin: center; }
+
+        @keyframes gearSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ── Person animations ── */
+        .person-bob { animation: bob 3s ease-in-out infinite; }
+        .person-bob2 { animation: bob 3.5s ease-in-out infinite 0.8s; }
+        .person-bob3 { animation: bob 2.8s ease-in-out infinite 1.4s; }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        /* ── Floating wrench ── */
+        .wrench-float { animation: wrenchFloat 4s ease-in-out infinite; }
+
+        @keyframes wrenchFloat {
+            0%, 100% { transform: rotate(-20deg) translate(0,0); }
+            50% { transform: rotate(-15deg) translate(2px, -5px); }
+        }
+
+        /* ── Magnifier pulse ── */
+        .mag-pulse { animation: magFloat 3.5s ease-in-out infinite; }
+
+        @keyframes magFloat {
+            0%, 100% { transform: translate(0,0); }
+            50% { transform: translate(3px, -6px); }
+        }
+
+        /* ── Bar chart grow ── */
+        .bar1 { animation: barGrow 2s ease-in-out infinite; transform-origin: bottom; }
+        .bar2 { animation: barGrow 2s ease-in-out infinite 0.3s; transform-origin: bottom; }
+        .bar3 { animation: barGrow 2s ease-in-out infinite 0.6s; transform-origin: bottom; }
+
+        @keyframes barGrow {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.05); }
+        }
+
+        /* ── Ladder person arm anim ── */
+        .arm-wave { animation: armWave 1.5s ease-in-out infinite; transform-origin: top right; }
+
+        @keyframes armWave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(20deg); }
+        }
+
+        @media (max-width: 860px) {
+            .page { flex-direction: column; gap: 20px; }
+            .scene-wrap { width: 340px; height: 260px; }
+            .content { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background shapes -->
+    <div class="bg-shape bg-shape-tl"></div>
+    <div class="bg-shape bg-shape-br"></div>
+    <div class="bg-shape bg-shape-tr"></div>
+
+    <div class="page">
+
+        <!-- ══════════ ISOMETRIC SCENE ══════════ -->
+        <div class="scene-wrap">
+            <svg class="scene-svg" viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <!-- ── Ground / floor shadow ── -->
+                <ellipse cx="200" cy="330" rx="170" ry="18" fill="rgba(100,150,200,0.15)"/>
+
+                <!-- ═══════════════════════════════════════
+                     MONITOR (isometric perspective)
+                ════════════════════════════════════════ -->
+
+                <!-- Monitor body — isometric face -->
+                <g transform="translate(60,40)">
+                    <!-- Back panel depth (right face) -->
+                    <polygon points="270,70 290,85 290,225 270,210" fill="#B8CEDF"/>
+                    <!-- Back panel depth (bottom face) -->
+                    <polygon points="50,210 270,210 290,225 70,225" fill="#A8BECE"/>
+
+                    <!-- Main screen face -->
+                    <rect x="50" y="70" width="220" height="140" rx="8" fill="#EEF5FC"/>
+                    <!-- Screen border / bezel -->
+                    <rect x="50" y="70" width="220" height="140" rx="8" fill="none" stroke="#C5D9EE" stroke-width="3"/>
+
+                    <!-- Screen top bar (browser bar style) -->
+                    <rect x="50" y="70" width="220" height="28" rx="8" fill="#FFFFFF"/>
+                    <rect x="50" y="90" width="220" height="8" fill="#FFFFFF"/>
+                    <!-- URL bar -->
+                    <rect x="80" y="77" width="130" height="14" rx="7" fill="#EEF5FC"/>
+                    <text x="88" y="88" font-size="8" fill="#A0B8CC" font-family="Nunito">www</text>
+                    <!-- Traffic light dots -->
+                    <circle cx="60" cy="84" r="4" fill="#FF6B6B"/>
+                    <circle cx="72" cy="84" r="4" fill="#FFE566"/>
+
+                    <!-- Gear 1 (big, left) -->
+                    <g transform="translate(120,148)">
+                        <g class="gear-spin">
+                            <circle cx="0" cy="0" r="30" fill="#C5D9EE" stroke="#8AAEC8" stroke-width="2"/>
+                            <circle cx="0" cy="0" r="16" fill="#EEF5FC" stroke="#8AAEC8" stroke-width="2"/>
+                            <!-- Gear teeth -->
+                            <rect x="-6" y="-36" width="12" height="12" rx="2" fill="#8AAEC8"/>
+                            <rect x="-6" y="24" width="12" height="12" rx="2" fill="#8AAEC8"/>
+                            <rect x="24" y="-6" width="12" height="12" rx="2" fill="#8AAEC8"/>
+                            <rect x="-36" y="-6" width="12" height="12" rx="2" fill="#8AAEC8"/>
+                            <rect x="17" y="-25" width="12" height="12" rx="2" fill="#8AAEC8" transform="rotate(45)"/>
+                            <rect x="-29" y="-25" width="12" height="12" rx="2" fill="#8AAEC8" transform="rotate(-45)"/>
+                        </g>
+                    </g>
+
+                    <!-- Gear 2 (smaller, right) -->
+                    <g transform="translate(196,140)">
+                        <g class="gear-spin-rev">
+                            <circle cx="0" cy="0" r="20" fill="#D4E6F5" stroke="#8AAEC8" stroke-width="1.5"/>
+                            <circle cx="0" cy="0" r="10" fill="#EEF5FC" stroke="#8AAEC8" stroke-width="1.5"/>
+                            <rect x="-4" y="-24" width="8" height="8" rx="1.5" fill="#8AAEC8"/>
+                            <rect x="-4" y="16" width="8" height="8" rx="1.5" fill="#8AAEC8"/>
+                            <rect x="16" y="-4" width="8" height="8" rx="1.5" fill="#8AAEC8"/>
+                            <rect x="-24" y="-4" width="8" height="8" rx="1.5" fill="#8AAEC8"/>
+                        </g>
+                    </g>
+
+                    <!-- Monitor stand -->
+                    <rect x="145" y="210" width="30" height="22" rx="4" fill="#C5D9EE"/>
+                    <rect x="120" y="230" width="80" height="10" rx="5" fill="#B8CEDF"/>
+                </g>
+
+                <!-- ═══════════════════════════════════════
+                     TABLET / PHONE (right side)
+                ════════════════════════════════════════ -->
+                <g transform="translate(308, 90)">
+                    <!-- Tablet frame -->
+                    <rect x="0" y="0" width="70" height="110" rx="8" fill="#FFFFFF" stroke="#C5D9EE" stroke-width="2"/>
+                    <!-- Screen -->
+                    <rect x="5" y="10" width="60" height="88" rx="4" fill="#EEF5FC"/>
+                    <!-- Gear on tablet -->
+                    <g transform="translate(35, 54)">
+                        <g class="gear-spin">
+                            <circle cx="0" cy="0" r="18" fill="#E84A6F" opacity="0.15"/>
+                            <circle cx="0" cy="0" r="14" fill="#E84A6F" opacity="0.25"/>
+                            <circle cx="0" cy="0" r="8" fill="#E84A6F"/>
+                            <rect x="-4" y="-20" width="8" height="8" rx="1.5" fill="#E84A6F"/>
+                            <rect x="-4" y="12" width="8" height="8" rx="1.5" fill="#E84A6F"/>
+                            <rect x="12" y="-4" width="8" height="8" rx="1.5" fill="#E84A6F"/>
+                            <rect x="-20" y="-4" width="8" height="8" rx="1.5" fill="#E84A6F"/>
+                        </g>
+                    </g>
+                    <!-- Home button -->
+                    <circle cx="35" cy="104" r="4" fill="#E0ECF5"/>
+                </g>
+
+                <!-- ═══════════════════════════════════════
+                     BAR CHART (bottom left)
+                ════════════════════════════════════════ -->
+                <g transform="translate(72, 200)">
+                    <!-- Base platform -->
+                    <ellipse cx="50" cy="95" rx="52" ry="12" fill="rgba(100,150,200,0.2)"/>
+                    <!-- Bars (isometric feel with side shading) -->
+                    <!-- Bar 3 (tallest, left) -->
+                    <g class="bar1">
+                        <rect x="14" y="15" width="22" height="78" rx="3" fill="#E84A6F"/>
+                        <polygon points="14,15 36,15 40,10 18,10" fill="#FF7090"/>
+                        <polygon points="36,15 40,10 40,88 36,93" fill="#C73558"/>
+                    </g>
+                    <!-- Bar 2 (mid) -->
+                    <g class="bar2">
+                        <rect x="42" y="35" width="22" height="58" rx="3" fill="#E84A6F"/>
+                        <polygon points="42,35 64,35 68,30 46,30" fill="#FF7090"/>
+                        <polygon points="64,35 68,30 68,88 64,93" fill="#C73558"/>
+                    </g>
+                    <!-- Bar 1 (short, right) -->
+                    <g class="bar3">
+                        <rect x="70" y="55" width="22" height="38" rx="3" fill="#E84A6F"/>
+                        <polygon points="70,55 92,55 96,50 74,50" fill="#FF7090"/>
+                        <polygon points="92,55 96,50 96,88 92,93" fill="#C73558"/>
+                    </g>
+                </g>
+
+                <!-- ═══════════════════════════════════════
+                     LADDER
+                ════════════════════════════════════════ -->
+                <g transform="translate(180, 110)">
+                    <!-- Left rail -->
+                    <rect x="0" y="0" width="6" height="200" rx="3" fill="#8AAEC8"/>
+                    <!-- Right rail -->
+                    <rect x="28" y="0" width="6" height="200" rx="3" fill="#8AAEC8"/>
+                    <!-- Rungs -->
+                    <rect x="0" y="30" width="34" height="5" rx="2" fill="#6B90AB"/>
+                    <rect x="0" y="65" width="34" height="5" rx="2" fill="#6B90AB"/>
+                    <rect x="0" y="100" width="34" height="5" rx="2" fill="#6B90AB"/>
+                    <rect x="0" y="135" width="34" height="5" rx="2" fill="#6B90AB"/>
+                    <rect x="0" y="170" width="34" height="5" rx="2" fill="#6B90AB"/>
+                </g>
+
+                <!-- ═══════════════════════════════════════
+                     MAGNIFYING GLASS (bottom center)
+                ════════════════════════════════════════ -->
+                <g class="mag-pulse" transform="translate(230, 235)">
+                    <circle cx="32" cy="32" r="32" fill="#E84A6F" opacity="0.15"/>
+                    <circle cx="32" cy="32" r="26" fill="none" stroke="#E84A6F" stroke-width="8"/>
+                    <line x1="52" y1="52" x2="70" y2="72" stroke="#E84A6F" stroke-width="9" stroke-linecap="round"/>
+                    <!-- Glass glare -->
+                    <path d="M20,18 Q28,14 36,18" stroke="rgba(255,255,255,0.6)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                </g>
+
+                <!-- ═══════════════════════════════════════
+                     WRENCH (bottom left floor)
+                ════════════════════════════════════════ -->
+                <g class="wrench-float" transform="translate(48, 268)">
+                    <!-- Wrench body -->
+                    <rect x="0" y="8" width="90" height="14" rx="7" fill="#8AAEC8"/>
+                    <!-- Wrench head left -->
+                    <circle cx="0" cy="15" r="14" fill="#8AAEC8"/>
+                    <circle cx="0" cy="15" r="8" fill="#C8DCF0"/>
+                    <!-- Wrench head right (open) -->
+                    <circle cx="90" cy="15" r="11" fill="#8AAEC8"/>
+                    <circle cx="90" cy="15" r="6" fill="#C8DCF0"/>
+                </g>
+
+                <!-- ═══════════════════════════════════════
+                     PERSON 1 — on top of bar chart (left, laptop)
+                ════════════════════════════════════════ -->
+                <g class="person-bob" transform="translate(72, 148)">
+                    <!-- Body -->
+                    <rect x="8" y="20" width="18" height="24" rx="6" fill="#5B9BD5"/>
+                    <!-- Head -->
+                    <circle cx="17" cy="14" r="12" fill="#F5C6A0"/>
+                    <!-- Hair -->
+                    <path d="M6,10 Q7,2 17,1 Q27,2 28,10 Q24,5 17,5 Q10,5 6,10Z" fill="#3D2B1F"/>
+                    <!-- Eyes -->
+                    <circle cx="13" cy="14" r="2" fill="#3D2B1F"/>
+                    <circle cx="21" cy="14" r="2" fill="#3D2B1F"/>
+                    <!-- Arms -->
+                    <line x1="8" y1="28" x2="-2" y2="36" stroke="#F5C6A0" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="26" y1="28" x2="36" y2="34" stroke="#F5C6A0" stroke-width="5" stroke-linecap="round"/>
+                    <!-- Laptop -->
+                    <rect x="-6" y="34" width="20" height="14" rx="2" fill="#2C5F8A"/>
+                    <rect x="-4" y="36" width="16" height="10" rx="1" fill="#3A7FBA"/>
+                    <rect x="-8" y="48" width="24" height="3" rx="1.5" fill="#1E4A6F"/>
+                    <!-- Legs -->
+                    <rect x="10" y="44" width="6" height="16" rx="3" fill="#2C5F8A"/>
+                    <rect x="18" y="44" width="6" height="16" rx="3" fill="#2C5F8A"/>
+                </g>
+
+                <!-- ═══════════════════════════════════════
+                     PERSON 2 — on ladder (climbing, female)
+                ════════════════════════════════════════ -->
+                <g class="person-bob2" transform="translate(165, 175)">
+                    <!-- Body -->
+                    <rect x="6" y="20" width="18" height="26" rx="6" fill="#E84A6F"/>
+                    <!-- Head -->
+                    <circle cx="15" cy="13" r="11" fill="#F5C6A0"/>
+                    <!-- Ponytail -->
+                    <path d="M22,8 Q30,5 28,16 Q26,10 22,10Z" fill="#C8843A"/>
+                    <!-- Hair -->
+                    <path d="M5,10 Q6,2 15,1 Q24,2 25,9 Q22,5 15,5 Q8,5 5,10Z" fill="#C8843A"/>
+                    <!-- Eyes -->
+                    <circle cx="11" cy="13" r="1.8" fill="#3D2B1F"/>
+                    <circle cx="19" cy="13" r="1.8" fill="#3D2B1F"/>
+                    <!-- Arms reaching up -->
+                    <line x1="6" y1="26" x2="-4" y2="16" stroke="#F5C6A0" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="24" y1="26" x2="30" y2="15" stroke="#F5C6A0" stroke-width="5" stroke-linecap="round"/>
+                    <!-- Legs -->
+                    <rect x="8" y="46" width="6" height="18" rx="3" fill="#2C5F8A"/>
+                    <rect x="16" y="46" width="6" height="18" rx="3" fill="#2C5F8A"/>
+                </g>
+
+                <!-- ═══════════════════════════════════════
+                     PERSON 3 — standing on tablet platform (right)
+                ════════════════════════════════════════ -->
+                <g class="person-bob3" transform="translate(308, 130)">
+                    <!-- Body -->
+                    <rect x="8" y="22" width="18" height="26" rx="6" fill="#5B9BD5"/>
+                    <!-- Head -->
+                    <circle cx="17" cy="15" r="12" fill="#F5C6A0"/>
+                    <!-- Hair (slick) -->
+                    <path d="M6,11 Q7,2 17,1 Q27,2 28,11 Q24,5 17,5 Q10,5 6,11Z" fill="#1A1A2E"/>
+                    <!-- Glasses -->
+                    <circle cx="13" cy="15" r="4" fill="none" stroke="#1A1A2E" stroke-width="1.5"/>
+                    <circle cx="21" cy="15" r="4" fill="none" stroke="#1A1A2E" stroke-width="1.5"/>
+                    <line x1="17" y1="15" x2="17" y2="15" stroke="#1A1A2E" stroke-width="1.5"/>
+                    <line x1="9" y1="14" x2="5" y2="13" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="25" y1="14" x2="29" y2="13" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round"/>
+                    <!-- Eyes inside glasses -->
+                    <circle cx="13" cy="15" r="2" fill="#3D2B1F"/>
+                    <circle cx="21" cy="15" r="2" fill="#3D2B1F"/>
+                    <!-- Arm left -->
+                    <line x1="8" y1="30" x2="-4" y2="36" stroke="#F5C6A0" stroke-width="5" stroke-linecap="round"/>
+                    <!-- Arm right (pointing/working on tablet) -->
+                    <line x1="26" y1="28" x2="36" y2="20" stroke="#F5C6A0" stroke-width="5" stroke-linecap="round"/>
+                    <!-- Legs -->
+                    <rect x="10" y="48" width="6" height="20" rx="3" fill="#1C2951"/>
+                    <rect x="18" y="48" width="6" height="20" rx="3" fill="#1C2951"/>
+                    <!-- Shoes -->
+                    <ellipse cx="13" cy="68" rx="7" ry="4" fill="#1A1A2E"/>
+                    <ellipse cx="21" cy="68" rx="7" ry="4" fill="#1A1A2E"/>
+                </g>
+
+                <!-- Connecting red dot accent on magnifier area -->
+                <circle cx="270" cy="260" r="5" fill="#E84A6F" opacity="0.6"/>
+                <circle cx="260" cy="248" r="3" fill="#E84A6F" opacity="0.4"/>
+
+            </svg>
+        </div>
+
+        <!-- ══════════ RIGHT CONTENT ══════════ -->
+        <div class="content">
+            <h2>Something Went</h2>
+            <h1>Wrong</h1>
+            <p>
+                We are working hard to fix the issue. Please try again later. If the problem persists, contact support with the error details.
+            </p>
+            <div style="display: flex; gap: 10px;">
+                <button class="enjoy-btn" onclick="goHome()">GO HOME</button>
+                <button class="enjoy-btn" style="border-color: var(--blue-mid); color: var(--blue-mid);" onclick="openSettings()">SETTINGS</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function goHome() {
+            if (window.electronAPI && window.electronAPI.goHome) {
+                window.electronAPI.goHome();
+            } else {
+                console.log('Navigate home');
+            }
+        }
+
+        function openSettings() {
+            if (window.ipcRenderer) {
+                window.ipcRenderer.send('open-settings');
+            } else if (window.electronAPI && window.electronAPI.sendMessage) {
+                window.electronAPI.sendMessage('open-settings');
+            } else {
+                console.log('Open settings');
+            }
+        }
+
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
