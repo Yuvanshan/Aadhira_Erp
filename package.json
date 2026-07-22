@@ -1,0 +1,7 @@
+{
+  "name": "aadhira-erp",
+  "private": true,
+  "engines": {
+    "node": "20.x"
+  }
+}
