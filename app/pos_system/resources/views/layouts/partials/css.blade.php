@@ -11,89 +11,142 @@
 <!-- app css -->
 <link rel="stylesheet" href="{{ asset('css/app.css?v='.$asset_v) }}">
 
-<style>
+<style type="text/css">
+    /* Premium Modern UI CSS Override System */
     :root {
-        --brand: #2563eb;
-        --brand-dark: #1d4ed8;
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --primary-light: #e0e7ff;
+        --success: #10b981;
+        --info: #06b6d4;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --bg-main: #f8fafc;
         --surface: #ffffff;
-        --surface-alt: #f8fafc;
-        --border: #e5e7eb;
-        --text-primary: #0f172a;
-        --text-secondary: #475569;
-        --shadow-soft: 0 20px 50px rgba(15, 23, 42, 0.08);
+        --border: #e2e8f0;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+        --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     body {
-        background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 28%), #f8fafc;
-        color: var(--text-primary);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+        background-color: var(--bg-main) !important;
+        color: var(--text-main) !important;
     }
 
-    .btn, .btn-flat, .btn-app, .btn-primary, .btn-success, .btn-warning, .btn-danger, .btn-info {
-        border-radius: 0.85rem !important;
-        transition: all 0.2s ease !important;
+    /* Cards & Boxes */
+    .box, .card, .panel, .modal-content, .info-box, .small-box {
+        background: var(--surface) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: var(--radius-xl) !important;
+        box-shadow: var(--shadow-md) !important;
+        transition: var(--transition-base);
     }
 
-    .btn, .btn-flat {
-        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08) !important;
+    .box:hover, .card:hover {
+        box-shadow: var(--shadow-lg) !important;
+    }
+
+    /* Buttons */
+    .btn {
+        border-radius: var(--radius-lg) !important;
+        font-weight: 500 !important;
+        padding: 0.5rem 1rem !important;
+        transition: var(--transition-base) !important;
+        box-shadow: var(--shadow-sm) !important;
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md) !important;
+    }
+
+    .btn:active {
+        transform: translateY(0);
     }
 
     .btn-primary {
-        background-color: var(--brand) !important;
-        border-color: var(--brand) !important;
-        color: #fff !important;
+        background-color: var(--primary) !important;
+        border-color: var(--primary) !important;
+        color: white !important;
     }
 
     .btn-primary:hover, .btn-primary:focus {
-        background-color: var(--brand-dark) !important;
-        border-color: var(--brand-dark) !important;
-        color: #fff !important;
+        background-color: var(--primary-hover) !important;
+        border-color: var(--primary-hover) !important;
     }
 
-    .card, .box, .panel, .modal-content, .info-box, .small-box {
-        background: var(--surface) !important;
-        border: 1px solid var(--border) !important;
-        border-radius: 1rem !important;
-        box-shadow: var(--shadow-soft) !important;
+    /* Modern Table design */
+    .table {
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+        width: 100% !important;
     }
 
     .table thead th {
-        background: #f8fafc !important;
+        background-color: #f1f5f9 !important;
+        color: var(--text-main) !important;
+        font-weight: 600 !important;
+        border-bottom: 2px solid var(--border) !important;
+        padding: 12px 16px !important;
+    }
+
+    .table tbody td {
+        padding: 12px 16px !important;
         border-bottom: 1px solid var(--border) !important;
-        color: var(--text-primary) !important;
+        vertical-align: middle !important;
+    }
+
+    .table tbody tr {
+        transition: var(--transition-base);
     }
 
     .table tbody tr:hover {
-        background: #f1f5f9 !important;
+        background-color: #f8fafc !important;
     }
 
-    .form-control, input, select, textarea, .select2-container .select2-selection--single, .select2-dropdown {
-        border-radius: 0.85rem !important;
-        border-color: var(--border) !important;
-        background: #ffffff !important;
-        color: var(--text-primary) !important;
-        box-shadow: none !important;
+    /* Forms & Inputs */
+    .form-control, input[type="text"], input[type="password"], input[type="email"], input[type="number"], select, textarea,
+    .select2-container--default .select2-selection--single {
+        border-radius: var(--radius-lg) !important;
+        border: 1px solid var(--border) !important;
+        padding: 0.5rem 0.85rem !important;
+        height: auto !important;
+        transition: var(--transition-base) !important;
+        background-color: var(--surface) !important;
     }
 
-    .form-control:focus, .select2-selection--single:focus {
-        border-color: var(--brand) !important;
-        box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15) !important;
+    .form-control:focus, input:focus, select:focus, textarea:focus,
+    .select2-container--default.select2-container--focus .select2-selection--single {
+        border-color: var(--primary) !important;
+        outline: none !important;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
     }
 
-    .content, .content-wrapper, .content-header, .box-body, .main-footer {
-        background: transparent !important;
+    /* Minimal Scrollbars */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
     }
 
-    .navbar, .main-header {
-        border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+    ::-webkit-scrollbar-track {
+        background: transparent;
     }
 
-    .content-header h1, .page-title {
-        color: var(--text-primary) !important;
+    ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
     }
 
-    .card-header, .box-header {
-        border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
-        background: transparent !important;
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
     }
 
     .tw-bg-gray-100 {

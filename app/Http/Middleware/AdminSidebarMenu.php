@@ -883,6 +883,26 @@ class AdminSidebarMenu
                   </svg>', 'id' => 'tour_step3']
                 )->order(85);
             }
+
+            // Admin Log
+            if (auth()->user()->can('business_settings.access') || auth()->user()->can('superadmin')) {
+                $menu->url(
+                    action([\App\Http\Controllers\AdminLogController::class, 'index']),
+                    __('lang_v1.admin_log'),
+                    [
+                        'icon' => '<svg aria-hidden="true" class="tw-size-5 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M3.5 5.5l1.5 1.5l2.5 -2.5"></path>
+                            <path d="M3.5 11.5l1.5 1.5l2.5 -2.5"></path>
+                            <path d="M3.5 17.5l1.5 1.5l2.5 -2.5"></path>
+                            <path d="M11 6l9 0"></path>
+                            <path d="M11 12l9 0"></path>
+                            <path d="M11 18l9 0"></path>
+                        </svg>',
+                        'active' => request()->segment(1) == 'admin-logs'
+                    ]
+                )->order(99);
+            }
         });
 
         //Add menus from modules

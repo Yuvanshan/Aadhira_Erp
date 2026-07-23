@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AccountReportsController;
 use App\Http\Controllers\AccountTypeController;
+use App\Http\Controllers\AdminLogController;
 // use App\Http\Controllers\Auth;
 use App\Http\Controllers\BackUpController;
 use App\Http\Controllers\BarcodeController;
@@ -112,6 +113,7 @@ Route::middleware(['setData', 'auth', 'SetSessionData', 'language', 'timezone', 
     Route::get('/sign-in-as-user/{id}', [ManageUserController::class, 'signInAsUser'])->name('sign-in-as-user');
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/admin-logs', [AdminLogController::class, 'index']);
     Route::get('/home/get-totals', [HomeController::class, 'getTotals']);
     Route::get('/home/product-stock-alert', [HomeController::class, 'getProductStockAlert']);
     Route::get('/home/purchase-payment-dues', [HomeController::class, 'getPurchasePaymentDues']);

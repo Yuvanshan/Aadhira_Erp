@@ -1500,7 +1500,17 @@ class Util
             ->withProperties($properties)
             ->log($action);
 
+        $location_id = null;
+        if (isset($on->location_id)) {
+            $location_id = $on->location_id;
+        } elseif (isset($properties['location_id'])) {
+            $location_id = $properties['location_id'];
+        } elseif (request()->has('location_id') && is_numeric(request()->get('location_id'))) {
+            $location_id = request()->get('location_id');
+        }
+
         $activity->business_id = $business_id;
+        $activity->location_id = $location_id;
         $activity->save();
     }
 
