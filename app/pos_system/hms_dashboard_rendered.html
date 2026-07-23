@@ -1,0 +1,3023 @@
+<!DOCTYPE html>
+<html class="tw-bg-white tw-scroll-smooth" lang="en"
+    dir="ltr">
+<head>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        name="viewport">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="jlCTpskpGwpAbYJh3v7jnMiJhY46L2i9a7Uhp7a3">
+    
+    <title>HMS - </title>
+
+    <link href="http://localhost/css/tailwind/app.css?v=681" rel="stylesheet">
+
+<link rel="stylesheet" href="http://localhost/css/vendor.css?v=681">
+
+
+
+<!-- app css -->
+<link rel="stylesheet" href="http://localhost/css/app.css?v=681">
+
+<style type="text/css">
+    /* Premium Modern UI CSS Override System */
+    :root {
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --primary-light: #e0e7ff;
+        --success: #10b981;
+        --info: #06b6d4;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --bg-main: #f8fafc;
+        --surface: #ffffff;
+        --border: #e2e8f0;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+        --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+        background-color: var(--bg-main) !important;
+        color: var(--text-main) !important;
+    }
+
+    /* Cards & Boxes */
+    .box, .card, .panel, .modal-content, .info-box, .small-box {
+        background: var(--surface) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: var(--radius-xl) !important;
+        box-shadow: var(--shadow-md) !important;
+        transition: var(--transition-base);
+    }
+
+    .box:hover, .card:hover {
+        box-shadow: var(--shadow-lg) !important;
+    }
+
+    /* Buttons */
+    .btn {
+        border-radius: var(--radius-lg) !important;
+        font-weight: 500 !important;
+        padding: 0.5rem 1rem !important;
+        transition: var(--transition-base) !important;
+        box-shadow: var(--shadow-sm) !important;
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md) !important;
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+    .btn-primary {
+        background-color: var(--primary) !important;
+        border-color: var(--primary) !important;
+        color: white !important;
+    }
+
+    .btn-primary:hover, .btn-primary:focus {
+        background-color: var(--primary-hover) !important;
+        border-color: var(--primary-hover) !important;
+    }
+
+    /* Modern Table design */
+    .table {
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+        width: 100% !important;
+    }
+
+    .table thead th {
+        background-color: #f1f5f9 !important;
+        color: var(--text-main) !important;
+        font-weight: 600 !important;
+        border-bottom: 2px solid var(--border) !important;
+        padding: 12px 16px !important;
+    }
+
+    .table tbody td {
+        padding: 12px 16px !important;
+        border-bottom: 1px solid var(--border) !important;
+        vertical-align: middle !important;
+    }
+
+    .table tbody tr {
+        transition: var(--transition-base);
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8fafc !important;
+    }
+
+    /* Forms & Inputs */
+    .form-control, input[type="text"], input[type="password"], input[type="email"], input[type="number"], select, textarea,
+    .select2-container--default .select2-selection--single {
+        border-radius: var(--radius-lg) !important;
+        border: 1px solid var(--border) !important;
+        padding: 0.5rem 0.85rem !important;
+        height: auto !important;
+        transition: var(--transition-base) !important;
+        background-color: var(--surface) !important;
+    }
+
+    .form-control:focus, input:focus, select:focus, textarea:focus,
+    .select2-container--default.select2-container--focus .select2-selection--single {
+        border-color: var(--primary) !important;
+        outline: none !important;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+    }
+
+    /* Minimal Scrollbars */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+
+    .tw-bg-gray-100 {
+        background-color: #f8fafc !important;
+    }
+</style>
+
+<style type="text/css">
+	/*
+	* Pattern lock css
+	* Pattern direction
+	* http://ignitersworld.com/lab/patternLock.html
+	*/
+	.patt-wrap {
+	  z-index: 10;
+	}
+	.patt-circ.hovered {
+	  background-color: #cde2f2;
+	  border: none;
+	}
+	.patt-circ.hovered .patt-dots {
+	  display: none;
+	}
+	.patt-circ.dir {
+	  background-image: url("http://localhost/img/pattern-directionicon-arrow.png");
+	  background-position: center;
+	  background-repeat: no-repeat;
+	}
+	.patt-circ.e {
+	  -webkit-transform: rotate(0);
+	  transform: rotate(0);
+	}
+	.patt-circ.s-e {
+	  -webkit-transform: rotate(45deg);
+	  transform: rotate(45deg);
+	}
+	.patt-circ.s {
+	  -webkit-transform: rotate(90deg);
+	  transform: rotate(90deg);
+	}
+	.patt-circ.s-w {
+	  -webkit-transform: rotate(135deg);
+	  transform: rotate(135deg);
+	}
+	.patt-circ.w {
+	  -webkit-transform: rotate(180deg);
+	  transform: rotate(180deg);
+	}
+	.patt-circ.n-w {
+	  -webkit-transform: rotate(225deg);
+	   transform: rotate(225deg);
+	}
+	.patt-circ.n {
+	  -webkit-transform: rotate(270deg);
+	  transform: rotate(270deg);
+	}
+	.patt-circ.n-e {
+	  -webkit-transform: rotate(315deg);
+	  transform: rotate(315deg);
+	}
+</style>
+
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+    body {
+      transition: opacity ease-in 0.2s;
+    }
+    body[unresolved] {
+      opacity: 0;
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+  </style>
+  <style type="text/css">
+    .swal-icon--error {
+      border-color: #f27474;
+      -webkit-animation: animateErrorIcon 0.5s;
+      animation: animateErrorIcon 0.5s;
+    }
+    .swal-icon--error__x-mark {
+      position: relative;
+      display: block;
+      -webkit-animation: animateXMark 0.5s;
+      animation: animateXMark 0.5s;
+    }
+    .swal-icon--error__line {
+      position: absolute;
+      height: 5px;
+      width: 47px;
+      background-color: #f27474;
+      display: block;
+      top: 37px;
+      border-radius: 2px;
+    }
+    .swal-icon--error__line--left {
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      left: 17px;
+    }
+    .swal-icon--error__line--right {
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      right: 16px;
+    }
+    @-webkit-keyframes animateErrorIcon {
+      0% {
+        -webkit-transform: rotateX(100deg);
+        transform: rotateX(100deg);
+        opacity: 0;
+      }
+      to {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        opacity: 1;
+      }
+    }
+    @keyframes animateErrorIcon {
+      0% {
+        -webkit-transform: rotateX(100deg);
+        transform: rotateX(100deg);
+        opacity: 0;
+      }
+      to {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        opacity: 1;
+      }
+    }
+    @-webkit-keyframes animateXMark {
+      0% {
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+        margin-top: 26px;
+        opacity: 0;
+      }
+      50% {
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+        margin-top: 26px;
+        opacity: 0;
+      }
+      80% {
+        -webkit-transform: scale(1.15);
+        transform: scale(1.15);
+        margin-top: -6px;
+      }
+      to {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        margin-top: 0;
+        opacity: 1;
+      }
+    }
+    @keyframes animateXMark {
+      0% {
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+        margin-top: 26px;
+        opacity: 0;
+      }
+      50% {
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+        margin-top: 26px;
+        opacity: 0;
+      }
+      80% {
+        -webkit-transform: scale(1.15);
+        transform: scale(1.15);
+        margin-top: -6px;
+      }
+      to {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        margin-top: 0;
+        opacity: 1;
+      }
+    }
+    .swal-icon--warning {
+      border-color: #f8bb86;
+      -webkit-animation: pulseWarning 0.75s infinite alternate;
+      animation: pulseWarning 0.75s infinite alternate;
+    }
+    .swal-icon--warning__body {
+      width: 5px;
+      height: 47px;
+      top: 10px;
+      border-radius: 2px;
+      margin-left: -2px;
+    }
+    .swal-icon--warning__body,
+    .swal-icon--warning__dot {
+      position: absolute;
+      left: 50%;
+      background-color: #f8bb86;
+    }
+    .swal-icon--warning__dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      margin-left: -4px;
+      bottom: -11px;
+    }
+    @-webkit-keyframes pulseWarning {
+      0% {
+        border-color: #f8d486;
+      }
+      to {
+        border-color: #f8bb86;
+      }
+    }
+    @keyframes pulseWarning {
+      0% {
+        border-color: #f8d486;
+      }
+      to {
+        border-color: #f8bb86;
+      }
+    }
+    .swal-icon--success {
+      border-color: #a5dc86;
+    }
+    .swal-icon--success:after,
+    .swal-icon--success:before {
+      content: "";
+      border-radius: 50%;
+      position: absolute;
+      width: 60px;
+      height: 120px;
+      background: #fff;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    .swal-icon--success:before {
+      border-radius: 120px 0 0 120px;
+      top: -7px;
+      left: -33px;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      -webkit-transform-origin: 60px 60px;
+      transform-origin: 60px 60px;
+    }
+    .swal-icon--success:after {
+      border-radius: 0 120px 120px 0;
+      top: -11px;
+      left: 30px;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      -webkit-transform-origin: 0 60px;
+      transform-origin: 0 60px;
+      -webkit-animation: rotatePlaceholder 4.25s ease-in;
+      animation: rotatePlaceholder 4.25s ease-in;
+    }
+    .swal-icon--success__ring {
+      width: 80px;
+      height: 80px;
+      border: 4px solid hsla(98, 55%, 69%, 0.2);
+      border-radius: 50%;
+      box-sizing: content-box;
+      position: absolute;
+      left: -4px;
+      top: -4px;
+      z-index: 2;
+    }
+    .swal-icon--success__hide-corners {
+      width: 5px;
+      height: 90px;
+      background-color: #fff;
+      padding: 1px;
+      position: absolute;
+      left: 28px;
+      top: 8px;
+      z-index: 1;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+    .swal-icon--success__line {
+      height: 5px;
+      background-color: #a5dc86;
+      display: block;
+      border-radius: 2px;
+      position: absolute;
+      z-index: 2;
+    }
+    .swal-icon--success__line--tip {
+      width: 25px;
+      left: 14px;
+      top: 46px;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      -webkit-animation: animateSuccessTip 0.75s;
+      animation: animateSuccessTip 0.75s;
+    }
+    .swal-icon--success__line--long {
+      width: 47px;
+      right: 8px;
+      top: 38px;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      -webkit-animation: animateSuccessLong 0.75s;
+      animation: animateSuccessLong 0.75s;
+    }
+    @-webkit-keyframes rotatePlaceholder {
+      0% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      5% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      12% {
+        -webkit-transform: rotate(-405deg);
+        transform: rotate(-405deg);
+      }
+      to {
+        -webkit-transform: rotate(-405deg);
+        transform: rotate(-405deg);
+      }
+    }
+    @keyframes rotatePlaceholder {
+      0% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      5% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      12% {
+        -webkit-transform: rotate(-405deg);
+        transform: rotate(-405deg);
+      }
+      to {
+        -webkit-transform: rotate(-405deg);
+        transform: rotate(-405deg);
+      }
+    }
+    @-webkit-keyframes animateSuccessTip {
+      0% {
+        width: 0;
+        left: 1px;
+        top: 19px;
+      }
+      54% {
+        width: 0;
+        left: 1px;
+        top: 19px;
+      }
+      70% {
+        width: 50px;
+        left: -8px;
+        top: 37px;
+      }
+      84% {
+        width: 17px;
+        left: 21px;
+        top: 48px;
+      }
+      to {
+        width: 25px;
+        left: 14px;
+        top: 45px;
+      }
+    }
+    @keyframes animateSuccessTip {
+      0% {
+        width: 0;
+        left: 1px;
+        top: 19px;
+      }
+      54% {
+        width: 0;
+        left: 1px;
+        top: 19px;
+      }
+      70% {
+        width: 50px;
+        left: -8px;
+        top: 37px;
+      }
+      84% {
+        width: 17px;
+        left: 21px;
+        top: 48px;
+      }
+      to {
+        width: 25px;
+        left: 14px;
+        top: 45px;
+      }
+    }
+    @-webkit-keyframes animateSuccessLong {
+      0% {
+        width: 0;
+        right: 46px;
+        top: 54px;
+      }
+      65% {
+        width: 0;
+        right: 46px;
+        top: 54px;
+      }
+      84% {
+        width: 55px;
+        right: 0;
+        top: 35px;
+      }
+      to {
+        width: 47px;
+        right: 8px;
+        top: 38px;
+      }
+    }
+    @keyframes animateSuccessLong {
+      0% {
+        width: 0;
+        right: 46px;
+        top: 54px;
+      }
+      65% {
+        width: 0;
+        right: 46px;
+        top: 54px;
+      }
+      84% {
+        width: 55px;
+        right: 0;
+        top: 35px;
+      }
+      to {
+        width: 47px;
+        right: 8px;
+        top: 38px;
+      }
+    }
+    .swal-icon--info {
+      border-color: #c9dae1;
+    }
+    .swal-icon--info:before {
+      width: 5px;
+      height: 29px;
+      bottom: 17px;
+      border-radius: 2px;
+      margin-left: -2px;
+    }
+    .swal-icon--info:after,
+    .swal-icon--info:before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      background-color: #c9dae1;
+    }
+    .swal-icon--info:after {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      margin-left: -3px;
+      top: 19px;
+    }
+    .swal-icon {
+      width: 80px;
+      height: 80px;
+      border-width: 4px;
+      border-style: solid;
+      border-radius: 50%;
+      padding: 0;
+      position: relative;
+      box-sizing: content-box;
+      margin: 20px auto;
+    }
+    .swal-icon:first-child {
+      margin-top: 32px;
+    }
+    .swal-icon--custom {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      border: none;
+      border-radius: 0;
+    }
+    .swal-icon img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .swal-title {
+      color: rgba(0, 0, 0, 0.65);
+      font-weight: 600;
+      text-transform: none;
+      position: relative;
+      display: block;
+      padding: 13px 16px;
+      font-size: 27px;
+      line-height: normal;
+      text-align: center;
+      margin-bottom: 0;
+    }
+    .swal-title:first-child {
+      margin-top: 26px;
+    }
+    .swal-title:not(:first-child) {
+      padding-bottom: 0;
+    }
+    .swal-title:not(:last-child) {
+      margin-bottom: 13px;
+    }
+    .swal-text {
+      font-size: 16px;
+      position: relative;
+      float: none;
+      line-height: normal;
+      vertical-align: top;
+      text-align: left;
+      display: inline-block;
+      margin: 0;
+      padding: 0 10px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.64);
+      max-width: calc(100% - 20px);
+      overflow-wrap: break-word;
+      box-sizing: border-box;
+    }
+    .swal-text:first-child {
+      margin-top: 45px;
+    }
+    .swal-text:last-child {
+      margin-bottom: 45px;
+    }
+    .swal-footer {
+      text-align: right;
+      padding-top: 13px;
+      margin-top: 13px;
+      padding: 13px 16px;
+      border-radius: inherit;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .swal-button-container {
+      margin: 5px;
+      display: inline-block;
+      position: relative;
+    }
+    .swal-button {
+      background-color: #7cd1f9;
+      color: #fff;
+      border: none;
+      box-shadow: none;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 24px;
+      margin: 0;
+      cursor: pointer;
+    }
+    .swal-button[not:disabled]:hover {
+      background-color: #78cbf2;
+    }
+    .swal-button:active {
+      background-color: #70bce0;
+    }
+    .swal-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(43, 114, 165, 0.29);
+    }
+    .swal-button[disabled] {
+      opacity: 0.5;
+      cursor: default;
+    }
+    .swal-button::-moz-focus-inner {
+      border: 0;
+    }
+    .swal-button--cancel {
+      color: #555;
+      background-color: #efefef;
+    }
+    .swal-button--cancel[not:disabled]:hover {
+      background-color: #e8e8e8;
+    }
+    .swal-button--cancel:active {
+      background-color: #d7d7d7;
+    }
+    .swal-button--cancel:focus {
+      box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(116, 136, 150, 0.29);
+    }
+    .swal-button--danger {
+      background-color: #e64942;
+    }
+    .swal-button--danger[not:disabled]:hover {
+      background-color: #df4740;
+    }
+    .swal-button--danger:active {
+      background-color: #cf423b;
+    }
+    .swal-button--danger:focus {
+      box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(165, 43, 43, 0.29);
+    }
+    .swal-content {
+      padding: 0 20px;
+      margin-top: 20px;
+      font-size: medium;
+    }
+    .swal-content:last-child {
+      margin-bottom: 20px;
+    }
+    .swal-content__input,
+    .swal-content__textarea {
+      -webkit-appearance: none;
+      background-color: #fff;
+      border: none;
+      font-size: 14px;
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      padding: 10px 13px;
+      border-radius: 2px;
+      transition: border-color 0.2s;
+    }
+    .swal-content__input:focus,
+    .swal-content__textarea:focus {
+      outline: none;
+      border-color: #6db8ff;
+    }
+    .swal-content__textarea {
+      resize: vertical;
+    }
+    .swal-button--loading {
+      color: transparent;
+    }
+    .swal-button--loading ~ .swal-button__loader {
+      opacity: 1;
+    }
+    .swal-button__loader {
+      position: absolute;
+      height: auto;
+      width: 43px;
+      z-index: 2;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      text-align: center;
+      pointer-events: none;
+      opacity: 0;
+    }
+    .swal-button__loader div {
+      display: inline-block;
+      float: none;
+      vertical-align: baseline;
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: none;
+      margin: 2px;
+      opacity: 0.4;
+      border-radius: 7px;
+      background-color: hsla(0, 0%, 100%, 0.9);
+      transition: background 0.2s;
+      -webkit-animation: swal-loading-anim 1s infinite;
+      animation: swal-loading-anim 1s infinite;
+    }
+    .swal-button__loader div:nth-child(3n + 2) {
+      -webkit-animation-delay: 0.15s;
+      animation-delay: 0.15s;
+    }
+    .swal-button__loader div:nth-child(3n + 3) {
+      -webkit-animation-delay: 0.3s;
+      animation-delay: 0.3s;
+    }
+    @-webkit-keyframes swal-loading-anim {
+      0% {
+        opacity: 0.4;
+      }
+      20% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 1;
+      }
+      to {
+        opacity: 0.4;
+      }
+    }
+    @keyframes swal-loading-anim {
+      0% {
+        opacity: 0.4;
+      }
+      20% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 1;
+      }
+      to {
+        opacity: 0.4;
+      }
+    }
+    .swal-overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0;
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 10000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .swal-overlay:before {
+      content: " ";
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+    }
+    .swal-overlay--show-modal {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .swal-overlay--show-modal .swal-modal {
+      opacity: 1;
+      pointer-events: auto;
+      box-sizing: border-box;
+      -webkit-animation: showSweetAlert 0.3s;
+      animation: showSweetAlert 0.3s;
+      will-change: transform;
+    }
+    .swal-modal {
+      width: 478px;
+      opacity: 0;
+      pointer-events: none;
+      background-color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      position: static;
+      margin: 20px auto;
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      z-index: 10001;
+      transition: opacity 0.2s, -webkit-transform 0.3s;
+      transition: transform 0.3s, opacity 0.2s;
+      transition: transform 0.3s, opacity 0.2s, -webkit-transform 0.3s;
+    }
+    @media (max-width: 500px) {
+      .swal-modal {
+        width: calc(100% - 20px);
+      }
+    }
+    @-webkit-keyframes showSweetAlert {
+      0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+      1% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+      }
+      45% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+      }
+      80% {
+        -webkit-transform: scale(0.95);
+        transform: scale(0.95);
+      }
+      to {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+    @keyframes showSweetAlert {
+      0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+      1% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+      }
+      45% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+      }
+      80% {
+        -webkit-transform: scale(0.95);
+        transform: scale(0.95);
+      }
+      to {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+  </style>
+  <style>
+    .action-link[data-v-1552a5b6] {
+      cursor: pointer;
+    }
+  </style>
+  <style>
+    .action-link[data-v-397d14ca] {
+      cursor: pointer;
+    }
+  </style>
+  <style>
+    .action-link[data-v-49962cc0] {
+      cursor: pointer;
+    }
+  </style>
+    
+</head>
+<body
+    class="tw-font-sans tw-antialiased tw-text-gray-900 tw-bg-slate-50  hold-transition skin-blue-light  sidebar-mini " >
+    <div class="tw-flex thetop">
+        <script type="text/javascript">
+            if (localStorage.getItem("upos_sidebar_collapse") == 'true') {
+                var body = document.getElementsByTagName("body")[0];
+                body.className += " sidebar-collapse";
+            }
+        </script>
+                    <!-- Left side column. contains the logo and sidebar -->
+<aside class="side-bar tw-relative tw-hidden tw-h-full tw-bg-white tw-w-64 xl:tw-w-64 lg:tw-flex lg:tw-flex-col tw-shrink-0">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+
+    
+
+    <a href="http://localhost/home"
+        class="tw-flex tw-items-center tw-justify-center tw-w-full tw-border-r tw-h-15 tw-bg-primary-800 tw-shrink-0 tw-border-primary-500/30">
+        <p class="tw-text-lg tw-font-medium tw-text-white side-bar-heading tw-text-center">
+             <span class="tw-inline-block tw-w-3 tw-h-3 tw-bg-green-400 tw-rounded-full" title="Online"></span>
+        </p>
+    </a>
+
+    <!-- Sidebar Menu -->
+    <div class="tw-flex-1 tw-p-3 tw-space-y-3 tw-overflow-y-auto tw-border-r tw-border-gray-200" id="side-bar">
+<a href="http://localhost/superadmin" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100" ><i class="fa fas fa-users-cog"></i> <span class="tw-truncate">Superadmin</span></a>
+<a href="http://localhost/home" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100" ><svg xmlns="http://www.w3.org/2000/svg" class="tw-size-5 tw-shrink-0" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+            <path d="M10 12h4v4h-4z" />
+          </svg> <span class="tw-truncate">Home</span></a>
+<div class=""><a href="#" title="" class="drop_down tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100 focus:tw-text-gray-900 focus:tw-bg-gray-100" ><svg aria-hidden="true" class="tw-size-5 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                  </svg> <span class="tw-truncate">User Management</span><svg aria-hidden="true" class="svg tw-ml-auto tw-text-gray-500 tw-size-4 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M15 6l-6 6l6 6" /></svg></a><div class=" chiled tw-relative tw-mt-2 tw-mb-4 tw-pl-11" style="display:none">
+            <div class="tw-absolute tw-inset-y-0 tw-w-px tw-h-full tw-bg-gray-200 tw-left-5"></div>
+            <div class="tw-space-y-3.5"><a href="http://localhost/users" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Users</span></a>
+<a href="http://localhost/roles" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Roles</span></a>
+<a href="http://localhost/sales-commission-agents" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Sales Commission Agents</span></a>
+</div></div></div>
+<div class=""><a href="#" title="" class="drop_down tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100 focus:tw-text-gray-900 focus:tw-bg-gray-100"  id="tour_step4"><svg aria-hidden="true" class="tw-size-5 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z"></path>
+                    <path d="M10 16h6"></path>
+                    <path d="M13 11m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                    <path d="M4 8h3"></path>
+                    <path d="M4 12h3"></path>
+                    <path d="M4 16h3"></path>
+                  </svg> <span class="tw-truncate">Contacts</span><svg aria-hidden="true" class="svg tw-ml-auto tw-text-gray-500 tw-size-4 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M15 6l-6 6l6 6" /></svg></a><div class=" chiled tw-relative tw-mt-2 tw-mb-4 tw-pl-11" style="display:none">
+            <div class="tw-absolute tw-inset-y-0 tw-w-px tw-h-full tw-bg-gray-200 tw-left-5"></div>
+            <div class="tw-space-y-3.5"><a href="http://localhost/contacts?type=supplier" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Suppliers</span></a>
+<a href="http://localhost/contacts?type=customer" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Customers</span></a>
+<a href="http://localhost/customer-group" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Customer Groups</span></a>
+<a href="http://localhost/contacts/import" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Import Contacts</span></a>
+</div></div></div>
+<div class=""><a href="#" title="" class="drop_down tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100 focus:tw-text-gray-900 focus:tw-bg-gray-100"  id="tour_step5"><svg aria-hidden="true" class="tw-size-5 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9l8 -4.5"></path>
+                    <path d="M12 12l8 -4.5"></path>
+                    <path d="M8.2 9.8l7.6 -4.6"></path>
+                    <path d="M12 12v9"></path>
+                    <path d="M12 12l-8 -4.5"></path>
+                  </svg> <span class="tw-truncate">Products</span><svg aria-hidden="true" class="svg tw-ml-auto tw-text-gray-500 tw-size-4 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M15 6l-6 6l6 6" /></svg></a><div class=" chiled tw-relative tw-mt-2 tw-mb-4 tw-pl-11" style="display:none">
+            <div class="tw-absolute tw-inset-y-0 tw-w-px tw-h-full tw-bg-gray-200 tw-left-5"></div>
+            <div class="tw-space-y-3.5"><a href="http://localhost/products" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>List Products</span></a>
+<a href="http://localhost/products/create" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Add Product</span></a>
+<a href="http://localhost/update-product-price" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Update Price</span></a>
+<a href="http://localhost/labels/show" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Print Labels</span></a>
+<a href="http://localhost/variation-templates" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Variations</span></a>
+<a href="http://localhost/import-products" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Import Products</span></a>
+<a href="http://localhost/import-opening-stock" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Import Opening Stock</span></a>
+<a href="http://localhost/selling-price-group" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Selling Price Group</span></a>
+<a href="http://localhost/units" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Units</span></a>
+<a href="http://localhost/taxonomies?type=product" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Categories</span></a>
+<a href="http://localhost/brands" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Brands</span></a>
+<a href="http://localhost/warranties" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Warranties</span></a>
+</div></div></div>
+<a href="http://localhost/manufacturing/recipe" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style=""><i class="fa fas fa-industry"></i> <span class="tw-truncate">Manufacturing</span></a>
+<a href="http://localhost/accounting/dashboard" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  id="tour_step14"><i class="fa fas fa-book"></i> <span class="tw-truncate">Accounting</span></a>
+<a href="http://localhost/repair/dashboard" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style="background-color:"><i class="fa fas fa-wrench"></i> <span class="tw-truncate">Repair</span></a>
+<a href="http://localhost/aiassistance/dashboard" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style=""><i class="fas fa-robot"></i> <span class="tw-truncate">AI Assistance</span></a>
+<a href="http://localhost/hms/dashboard" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100 tw-bg-gray-200 tw-text-primary-700"  style=""><svg xmlns="http://www.w3.org/2000/svg" class="tw-size-5 tw-shrink-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19.072 21h-14.144a1.928 1.928 0 0 1 -1.928 -1.928v-6.857c0 -.512 .203 -1 .566 -1.365l7.07 -7.063a1.928 1.928 0 0 1 2.727 0l7.071 7.063c.363 .362 .566 .853 .566 1.365v6.857a1.928 1.928 0 0 1 -1.928 1.928z" />
+                        <path d="M7 13v4h10v-4l-5 -5" />
+                        <path d="M14.8 5.2l-11.8 11.8" />
+                        <path d="M7 17v4" />
+                        <path d="M17 17v4" />
+                        </svg> <span class="tw-truncate">HMS</span></a>
+<div class=""><a href="#" title="" class="drop_down tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100 focus:tw-text-gray-900 focus:tw-bg-gray-100"  id="tour_step8"><svg aria-hidden="true" class="tw-size-5 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"></path>
+                    <path d="M18 14v4h4"></path>
+                    <path d="M18 11v-4a2 2 0 0 0 -2 -2h-2"></path>
+                    <path d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
+                    <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                    <path d="M8 11h4"></path>
+                    <path d="M8 15h3"></path>
+                  </svg> <span class="tw-truncate">Reports</span><svg aria-hidden="true" class="svg tw-ml-auto tw-text-gray-500 tw-size-4 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M15 6l-6 6l6 6" /></svg></a><div class=" chiled tw-relative tw-mt-2 tw-mb-4 tw-pl-11" style="display:none">
+            <div class="tw-absolute tw-inset-y-0 tw-w-px tw-h-full tw-bg-gray-200 tw-left-5"></div>
+            <div class="tw-space-y-3.5"><a href="http://localhost/reports/profit-loss" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Profit / Loss Report</span></a>
+<a href="http://localhost/reports/tax-report" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Tax Report</span></a>
+<a href="http://localhost/reports/customer-supplier" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Supplier & Customer Report</span></a>
+<a href="http://localhost/reports/customer-group" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Customer Groups Report</span></a>
+<a href="http://localhost/reports/stock-report" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Stock Report</span></a>
+<a href="http://localhost/reports/trending-products" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Trending Products</span></a>
+<a href="http://localhost/reports/items-report" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Items Report</span></a>
+<a href="http://localhost/reports/product-purchase-report" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Product Purchase Report</span></a>
+<a href="http://localhost/reports/product-sell-report" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Product Sell Report</span></a>
+<a href="http://localhost/reports/purchase-payment-report" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Purchase Payment Report</span></a>
+<a href="http://localhost/reports/sell-payment-report" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Sell Payment Report</span></a>
+<a href="http://localhost/reports/register-report" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Register Report</span></a>
+<a href="http://localhost/reports/sales-representative-report" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Sales Representative Report</span></a>
+</div></div></div>
+<a href="http://localhost/backup" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100" ><svg aria-hidden="true" class="tw-size-5 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 18.004h-5.343c-2.572 -.004 -4.657 -2.011 -4.657 -4.487c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.38 0 2.57 .811 3.128 1.986"></path>
+                <path d="M19 22v-6"></path>
+                <path d="M22 19l-3 -3l-3 3"></path>
+              </svg> <span class="tw-truncate">Administer Backup</span></a>
+<a href="http://localhost/manage-modules" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100" ><svg aria-hidden="true" class="tw-size-5 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 4l-8 4l8 4l8 -4l-8 -4"></path>
+              <path d="M4 12l8 4l8 -4"></path>
+              <path d="M4 16l8 4l8 -4"></path>
+            </svg> <span class="tw-truncate">Modules</span></a>
+<a href="http://localhost/bookings" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100" ><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11.5 21h-5.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M15 19l2 2l4 -4" /></svg> <span class="tw-truncate">Bookings</span></a>
+<a href="http://localhost/modules/kitchen" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100" ><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-flame"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12c2 -2.96 0 -7 -1 -8c0 3.038 -1.773 4.741 -3 6c-1.226 1.26 -2 3.24 -2 5a6 6 0 1 0 12 0c0 -1.532 -1.056 -3.94 -2 -5c-1.786 3 -2.791 3 -4 2z" /></svg> <span class="tw-truncate">Kitchen</span></a>
+<a href="http://localhost/modules/orders" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100" ><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="18"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-baseline-density-medium"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h16" /><path d="M4 12h16" /><path d="M4 4h16" /></svg> <span class="tw-truncate">Orders</span></a>
+<a href="http://localhost/notification-templates" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100" ><svg aria-hidden="true" class="tw-size-5 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
+                    <path d="M3 7l9 6l9 -6"></path>
+                  </svg> <span class="tw-truncate">Notification Templates</span></a>
+<div class=""><a href="#" title="" class="drop_down tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100 focus:tw-text-gray-900 focus:tw-bg-gray-100"  id="tour_step3"><svg aria-hidden="true" class="tw-size-5 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path>
+                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                  </svg> <span class="tw-truncate">Settings</span><svg aria-hidden="true" class="svg tw-ml-auto tw-text-gray-500 tw-size-4 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M15 6l-6 6l6 6" /></svg></a><div class=" chiled tw-relative tw-mt-2 tw-mb-4 tw-pl-11" style="display:none">
+            <div class="tw-absolute tw-inset-y-0 tw-w-px tw-h-full tw-bg-gray-200 tw-left-5"></div>
+            <div class="tw-space-y-3.5"><a href="http://localhost/business/settings" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " " id="tour_step2""> <span>Business Settings</span></a>
+<a href="http://localhost/business-location" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Business Locations</span></a>
+<a href="http://localhost/invoice-schemes" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Invoice Settings</span></a>
+<a href="http://localhost/barcodes" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Barcode Settings</span></a>
+<a href="http://localhost/printers" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Receipt Printers</span></a>
+<a href="http://localhost/tax-rates" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""> <span>Tax Rates</span></a>
+<a href="http://localhost/subscription" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""><i class="fa fas fa-sync"></i> <span>Package Subscription</span></a>
+</div></div></div>
+<a href="http://localhost/crm/dashboard" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style=""><i class="fas fa fa-broadcast-tower"></i> <span class="tw-truncate">CRM</span></a>
+<a href="http://localhost/project/project?project_view=list_view" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style=""><i class="fa fa-project-diagram"></i> <span class="tw-truncate">Project</span></a>
+<a href="http://localhost/asset/dashboard" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style="background-color:"><i class="fas fa fa-boxes"></i> <span class="tw-truncate">Asset Management</span></a>
+<a href="http://localhost/hrm/dashboard" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style=""><i class="fa fas fa-users"></i> <span class="tw-truncate">HRM</span></a>
+<a href="http://localhost/essentials/todo" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style=""><i class="fa fas fa-check-circle"></i> <span class="tw-truncate">Essentials</span></a>
+<a href="http://localhost/woocommerce" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style=""><i class="fab fa-wordpress"></i> <span class="tw-truncate">Woocommerce</span></a>
+<div class=""><a href="#" title="" class="drop_down tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100 focus:tw-text-gray-900 focus:tw-bg-gray-100"  style="background-color: #2dce89 !important;"><i class="fas fa-plug"></i> <span class="tw-truncate">Connector</span><svg aria-hidden="true" class="svg tw-ml-auto tw-text-gray-500 tw-size-4 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M15 6l-6 6l6 6" /></svg></a><div class=" chiled tw-relative tw-mt-2 tw-mb-4 tw-pl-11" style="display:none">
+            <div class="tw-absolute tw-inset-y-0 tw-w-px tw-h-full tw-bg-gray-200 tw-left-5"></div>
+            <div class="tw-space-y-3.5"><a href="http://localhost/connector/client" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""><i class="fa fas fa-network-wired"></i> <span>Clients</span></a>
+<a href="http://localhost/docs" title="" class="tw-flex tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-truncate tw-transition-all tw-duration-200 hover:tw-text-gray-900 tw-whitespace-nowrap " ""><i class="fa fas fa-book"></i> <span>Documentation</span></a>
+</div></div></div>
+<a href="http://localhost/spreadsheet/sheets" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style="background-color:"><i class="fas fa fa-file-excel"></i> <span class="tw-truncate">Spreadsheet</span></a>
+<a href="http://localhost/product-catalogue/catalogue-qr" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style=""><i class="fa fas fa-qrcode"></i> <span class="tw-truncate">Catalogue QR</span></a>
+<a href="http://localhost/admin-logs" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100" ><svg aria-hidden="true" class="tw-size-5 tw-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M3.5 5.5l1.5 1.5l2.5 -2.5"></path>
+                            <path d="M3.5 11.5l1.5 1.5l2.5 -2.5"></path>
+                            <path d="M3.5 17.5l1.5 1.5l2.5 -2.5"></path>
+                            <path d="M11 6l9 0"></path>
+                            <path d="M11 12l9 0"></path>
+                            <path d="M11 18l9 0"></path>
+                        </svg> <span class="tw-truncate">Admin Log</span></a>
+<a href="http://localhost/cms/cms-page?type=page" title="" class="tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-tracking-tight tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg tw-whitespace-nowrap hover:tw-text-gray-900 hover:tw-bg-gray-100"  style=""><i class="fas fa-window-restore fa"></i> <span class="tw-truncate">CMS</span></a>
+</div>
+
+
+    <!-- /.sidebar-menu -->
+    <!-- /.sidebar -->
+</aside>
+        
+        
+        <!-- Add currency related field-->
+        <input type="hidden" id="__code" value="">
+        <input type="hidden" id="__symbol" value="">
+        <input type="hidden" id="__thousand" value="">
+        <input type="hidden" id="__decimal" value="">
+        <input type="hidden" id="__symbol_placement" value="">
+        <input type="hidden" id="__precision" value="2">
+        <input type="hidden" id="__quantity_precision" value="2">
+        <!-- End of currency related field-->
+                    <input type="hidden" id="view_export_buttons">
+                                <main class="tw-flex tw-flex-col tw-flex-1 tw-h-full tw-min-w-0 tw-bg-gray-100">
+                            <!-- Main Header -->
+
+<div
+    class="tw-transition-all tw-duration-500 tw-border-b tw-border-slate-200 tw-bg-white tw-shadow-sm tw-shrink-0 lg:tw-h-15 no-print">
+    <div class="tw-px-5 tw-py-3">
+        <div class="tw-flex tw-items-start tw-justify-between tw-gap-6 lg:tw-items-center">
+            <div class="tw-flex tw-items-center tw-gap-3">
+                <button type="button" 
+                    class="small-view-button xl:tw-w-20 lg:tw-hidden tw-inline-flex tw-items-center tw-justify-center tw-text-sm tw-font-medium tw-text-white tw-transition-all tw-duration-200 tw-bg-primary-800 hover:tw-bg-primary-700 tw-p-1.5 tw-rounded-lg tw-ring-1 hover:tw-text-white tw-ring-white/10">
+                    <span class="tw-sr-only">
+                        Sidebar Menu
+                    </span>
+                    <svg aria-hidden="true" class="tw-size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 6l16 0" />
+                        <path d="M4 12l16 0" />
+                        <path d="M4 18l16 0" />
+                    </svg>
+                </button>
+
+                <button type="button"
+                    class="side-bar-collapse tw-hidden lg:tw-inline-flex tw-items-center tw-justify-center tw-text-sm tw-font-medium tw-text-white tw-transition-all tw-duration-200 tw-bg-primary-800 hover:tw-bg-primary-700 tw-p-1.5 tw-rounded-lg tw-ring-1 hover:tw-text-white tw-ring-white/10">
+                    <span class="tw-sr-only">
+                        Collapse Sidebar
+                    </span>
+                    <svg aria-hidden="true" class="tw-size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                        <path d="M15 4v16" />
+                        <path d="M10 10l-2 2l2 2" />
+                    </svg>
+                </button>
+            </div>
+
+
+            
+                            <i class="fas fa-info-circle pull-left mt-10 cursor-pointer" style= "margin-top: 24px; color:white" aria-hidden="true" data-toggle="popover" data-html="true" title="Active Package Details" data-placement="right" data-trigger="hover" data-content="
+    <table class='table table-condensed'>
+     <tr class='text-center'> 
+        <td colspan='2'>
+            Grocery shop
+        </td>
+     </tr>
+     <tr class='text-center'>
+        <td colspan='2'>
+             - 
+        </td>
+     </tr>
+     <tr> 
+        <td colspan='2'>
+            <i class='fa fa-check text-success'></i>
+                            Unlimited            
+            Business Locations        </td>
+     </tr>
+     <tr>
+        <td colspan='2'>
+            <i class='fa fa-check text-success'></i>
+                            Unlimited            
+            Users        </td>
+     <tr>
+     <tr>
+        <td colspan='2'>
+            <i class='fa fa-check text-success'></i>
+                            Unlimited            
+            Products        </td>
+     </tr>
+     <tr>
+        <td colspan='2'>
+            <i class='fa fa-check text-success'></i>
+                            Unlimited            
+            Invoices        </td>
+     </tr>
+     
+    </table>                     
+">
+</i>
+            
+            
+            
+
+            <div class="tw-flex tw-flex-wrap tw-items-center tw-justify-end tw-gap-3">
+                                    <button 
+		type="button" 
+		class="btn bg-blue btn-flat 
+		pull-left m-8 btn-sm mt-10 
+		clock_in_btn
+				"
+	    data-type="clock_in"
+	    data-toggle="tooltip"
+	    data-placement="bottom"
+	    title="Clock In" 
+	    >
+	    <i class="fas fa-arrow-circle-down"></i>
+	</button>
+
+	<button 
+		type="button" 
+		class="btn bg-yellow btn-flat pull-left m-8 
+		 btn-sm mt-10 clock_out_btn
+			    	hide
+	    		" 	
+	    data-type="clock_out"
+	    data-toggle="tooltip"
+	    data-placement="bottom"
+	    data-html="true"
+	    title="Clock Out " 
+	    >
+	    <i class="fas fa-hourglass-half fa-spin"></i>
+	</button>
+                                <details class="tw-dw-dropdown tw-relative tw-inline-block tw-text-left">
+                    <summary
+                        class="tw-inline-flex tw-transition-all tw-ring-1 tw-ring-white/10 hover:tw-text-white tw-cursor-pointer tw-duration-200 tw-bg-primary-800 hover:tw-bg-primary-700 tw-py-1.5 tw-px-3 tw-rounded-lg tw-items-center tw-justify-center tw-text-sm tw-font-medium tw-text-white tw-gap-1">
+                        <svg aria-hidden="true" class="tw-size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                            <path d="M9 12h6" />
+                            <path d="M12 9v6" />
+                        </svg>
+                    </summary>
+                    <ul class="tw-dw-menu tw-dw-dropdown-content tw-dw-z-[1] tw-dw-bg-base-100 tw-dw-rounded-box tw-w-48 tw-absolute tw-left-0 tw-z-10 tw-mt-2 tw-origin-top-right tw-bg-white tw-rounded-lg tw-shadow-lg tw-ring-1 tw-ring-gray-200 focus:tw-outline-none"
+                        role="menu" tabindex="-1">
+                        <div class="tw-p-2" role="none">
+                            <a href="http://localhost/calendar"
+                                class="tw-flex tw-items-center tw-gap-2 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg hover:tw-text-gray-900 hover:tw-bg-gray-100"
+                                role="menuitem" tabindex="-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <rect x="4" y="5" width="16" height="16" rx="2" />
+                                    <line x1="16" y1="3" x2="16" y2="7" />
+                                    <line x1="8" y1="3" x2="8" y2="7" />
+                                    <line x1="4" y1="11" x2="20" y2="11" />
+                                    <line x1="11" y1="15" x2="12" y2="15" />
+                                    <line x1="12" y1="15" x2="12" y2="18" />
+                                </svg>
+                                Calendar                            </a>
+                                                            <a href="#"
+                                    data-href="http://localhost/essentials/todo/create"
+                                    data-container="#task_modal"
+                                    class="btn-modal tw-flex tw-items-center tw-gap-2 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg hover:tw-text-gray-900 hover:tw-bg-gray-100"
+                                    role="menuitem" tabindex="-1">
+                                    <svg aria-hidden="true" class="tw-w-5 tw-h-5" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+                                        <path d="M9 12l2 2l4 -4" />
+                                    </svg>
+                                    Add To Do                                </a>
+                                                                                        <a href="#" id="start_tour"
+                                    class="tw-flex tw-items-center tw-gap-2 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg hover:tw-text-gray-900 hover:tw-bg-gray-100"
+                                    role="menuitem" tabindex="-1">
+                                    <svg aria-hidden="true" class="tw-w-5 tw-h-5" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                        <path d="M12 17l0 .01" />
+                                        <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
+                                    </svg>
+                                    Application Tour                                </a>
+                                                    </div>
+                    </ul>
+
+                </details>
+
+
+                
+
+                <button id="btnCalculator" title="Calculator" data-content='<div id="calculator">
+  <div class="row text-center" id="calc">
+    <div class="calcBG col-md-12 text-center">
+      <div class="row" id="result">
+        <form name="calc">
+          <input type="text" class="screen text-right" name="result" readonly>
+        </form>
+      </div>
+      <div class="row">
+        <button id="allClear" type="button" class="btn btn-danger" onclick="clearScreen()">AC</button>
+        <button id="clear" type="button" class="btn btn-warning" onclick="clearScreen()">CE</button>
+        <button id="%" type="button" class="btn" onclick="calEnterVal(this.id)">%</button>
+        <button id="/" type="button" class="btn" onclick="calEnterVal(this.id)">÷</button>
+      </div>
+      <div class="row">
+        <button id="7" type="button" class="btn" onclick="calEnterVal(this.id)">7</button>
+        <button id="8" type="button" class="btn" onclick="calEnterVal(this.id)">8</button>
+        <button id="9" type="button" class="btn" onclick="calEnterVal(this.id)">9</button>
+        <button id="*" type="button" class="btn" onclick="calEnterVal(this.id)">x</button>
+      </div>
+      <div class="row">
+        <button id="4" type="button" class="btn" onclick="calEnterVal(this.id)">4</button>
+        <button id="5" type="button" class="btn" onclick="calEnterVal(this.id)">5</button>
+        <button id="6" type="button" class="btn" onclick="calEnterVal(this.id)">6</button>
+        <button id="-" type="button" class="btn" onclick="calEnterVal(this.id)">-</button>
+      </div>
+      <div class="row">
+        <button id="1" type="button" class="btn" onclick="calEnterVal(this.id)">1</button>
+        <button id="2" type="button" class="btn" onclick="calEnterVal(this.id)">2</button>
+        <button id="3" type="button" class="btn" onclick="calEnterVal(this.id)">3</button>
+        <button id="+" type="button" class="btn" onclick="calEnterVal(this.id)">+</button>
+      </div>
+      <div class="row">
+        <button id="0" type="button" class="btn" onclick="calEnterVal(this.id)">0</button>
+        <button id="." type="button" class="btn" onclick="calEnterVal(this.id)">.</button>
+        <button id="equals" type="button" class="btn btn-success" onclick="calculate()">=</button>
+        <button id="blank" type="button" class="btn">&nbsp;</button>
+      </div>
+    </div>
+  </div>
+</div>'
+                    type="button" data-trigger="click" data-html="true" data-placement="bottom" 
+                    class="tw-hidden md:tw-inline-flex tw-items-center tw-justify-center tw-text-sm tw-font-medium tw-text-white tw-transition-all tw-duration-200 tw-bg-primary-800 hover:tw-bg-primary-700 tw-p-1.5 tw-rounded-lg tw-ring-1 hover:tw-text-white tw-ring-white/10">
+                    <span class="tw-sr-only" aria-hidden="true">
+                        Calculator
+                    </span>
+                    <svg aria-hidden="true" class="tw-size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 3m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                        <path d="M8 7m0 1a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1z" />
+                        <path d="M8 14l0 .01" />
+                        <path d="M12 14l0 .01" />
+                        <path d="M16 14l0 .01" />
+                        <path d="M8 17l0 .01" />
+                        <path d="M12 17l0 .01" />
+                        <path d="M16 17l0 .01" />
+                    </svg>
+                </button>
+
+                                                    <a href="http://localhost/pos/create?sub_type=repair" title="Add Repair" data-toggle="tooltip" data-placement="bottom" class="btn btn-success btn-flat m-8 btn-sm mt-10 pull-left">
+			<i class="fa fa-wrench fa-lg"></i>
+			<strong>Repair</strong>
+		</a>
+	                                                    <button type="button" type="button" id="view_todays_profit" title="Today&#039;s profit"
+                        data-toggle="tooltip" data-placement="bottom"
+                        class="tw-hidden sm:tw-inline-flex tw-items-center tw-ring-1 tw-ring-white/10 tw-justify-center tw-text-sm tw-font-medium tw-text-white hover:tw-text-white tw-transition-all tw-duration-200 tw-bg-primary-800 hover:tw-bg-primary-700 tw-p-1.5 tw-rounded-lg">
+                        <span class="tw-sr-only">
+                            Today's Profit
+                        </span>
+                        <svg aria-hidden="true" class="tw-size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                            <path d="M3 6m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+                            <path d="M18 12l.01 0" />
+                            <path d="M6 12l.01 0" />
+                        </svg>
+                    </button>
+                
+                <button type="button"
+                    class="tw-hidden lg:tw-inline-flex tw-transition-all tw-ring-1 tw-ring-white/10 tw-duration-200 tw-bg-primary-800 hover:tw-bg-primary-700 tw-py-1.5 tw-px-3 tw-rounded-lg tw-items-center tw-justify-center tw-text-sm tw-font-medium tw-text-white hover:tw-text-white tw-font-mono">
+                    
+                </button>
+
+                <!-- Notifications: style can be found in dropdown.less -->
+<li class="dropdown notifications-menu tw-list-none">
+    <a type="button"
+        class="dropdown-toggle load_notifications tw-inline-flex tw-items-center tw-ring-1 tw-ring-white/10 tw-justify-center tw-text-sm tw-font-medium tw-text-white hover:tw-text-white tw-transition-all tw-duration-200 tw-bg-primary-800 hover:tw-bg-primary-700 tw-p-1.5 tw-rounded-lg"
+        data-toggle="dropdown" id="show_unread_notifications" data-loaded="false">
+        <span class="tw-sr-only">
+            Notifications
+        </span>
+        <svg aria-hidden="true" class="tw-size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+            <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+        </svg>
+        <span class="label label-warning notifications_count"></span>
+    </a>
+    <ul class="dropdown-menu !tw-p-2 !tw-w-80 tw-absolute !tw-right-0 !tw-z-10 !tw-mt-2 !tw-origin-top-right !tw-bg-white !tw-rounded-lg !tw-shadow-lg !tw-ring-1 !tw-ring-gray-200 !focus:tw-outline-none" style="left: auto !important ; height:90vh; overflow-y: scroll;">
+        <!-- <li class="header">You have 10 unread notifications</li> -->
+        <li>
+            <!-- inner menu: contains the actual data -->
+
+            <ul class="menu" id="notifications_list">
+            </ul>
+        </li>
+
+            </ul>
+</li>
+
+<input type="hidden" id="notification_page" value="1">
+
+
+
+                <details class="tw-dw-dropdown tw-relative tw-inline-block tw-text-left">
+                    <summary data-toggle="popover"
+                        class="tw-dw-m-1 tw-inline-flex tw-transition-all tw-ring-1 tw-ring-white/10 tw-cursor-pointer tw-duration-200 tw-bg-primary-800 hover:tw-bg-primary-700 tw-py-1.5 tw-px-3 tw-rounded-lg tw-items-center tw-justify-center tw-text-sm tw-font-medium tw-text-white hover:tw-text-white tw-gap-1">
+                        <span class="tw-hidden md:tw-block">Yuvanshan Prabakaran</span>
+
+                        <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="tw-size-5"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" /></svg>
+
+                        
+                        
+                    </summary>
+
+                    <ul class="tw-p-2 tw-w-48 tw-absolute tw-right-0 tw-z-10 tw-mt-2 tw-origin-top-right tw-bg-white tw-rounded-lg tw-shadow-lg tw-ring-1 tw-ring-gray-200 focus:tw-outline-none"
+                        role="menu" tabindex="-1">
+                        <div class="tw-px-4 tw-pt-3 tw-pb-1" role="none">
+                            <p class="tw-text-sm" role="none">
+                                Signed in as                            </p>
+                            <p class="tw-text-sm tw-font-medium tw-text-gray-900 tw-truncate" role="none">
+                                Yuvanshan Prabakaran
+                            </p>
+                        </div>
+
+                        <li>
+                            <a href="http://localhost/user/profile"
+                                class="tw-flex tw-items-center tw-gap-2 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg hover:tw-text-gray-900 hover:tw-bg-gray-100"
+                                role="menuitem" tabindex="-1">
+                                <svg aria-hidden="true" class="tw-w-5 tw-h-5" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                </svg>
+                                Profile                            </a>
+                        </li>
+                        <li>
+                            <a href="http://localhost/logout"
+                                class="tw-flex tw-items-center tw-gap-2 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-text-gray-600 tw-transition-all tw-duration-200 tw-rounded-lg hover:tw-text-gray-900 hover:tw-bg-gray-100"
+                                role="menuitem" tabindex="-1">
+                                <svg aria-hidden="true" class="tw-w-5 tw-h-5" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                                    <path d="M9 12h12l-3 -3" />
+                                    <path d="M18 15l3 -3" />
+                                </svg>
+                                Sign Out                            </a>
+                        </li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+    </div>
+</div>
+                        <!-- empty div for vuejs -->
+            <div id="app">
+                            </div>
+            <div class="tw-flex-1 tw-overflow-y-auto tw-h-screen" id="scrollable-container">
+                    <section class="no-print">
+    <nav class="navbar-default tw-transition-all tw-duration-5000 tw-shrink-0 tw-rounded-2xl tw-m-[16px] tw-border-2 !tw-bg-white">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top: 3px; margin-right: 3px;">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost/hms/dashboard"><i class="fas fa-hotel"></i>HMS</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                        <li ><a href="http://localhost/hms/rooms">Rooms</a></li>
+                    </ul>
+                                                    <ul class="nav navbar-nav">
+                        <li ><a href="http://localhost/hms/room/pricing">Prices</a></li>
+                    </ul>
+                                <ul class="nav navbar-nav">
+                    <li ><a href="http://localhost/hms/bookings">Bookings</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li ><a href="http://localhost/hms/calendar">Calendar</a></li>
+                </ul>
+                                    <ul class="nav navbar-nav">
+                        <li ><a href="http://localhost/hms/extras">Extras</a></li>
+                    </ul>
+                                                    <ul class="nav navbar-nav">
+                        <li ><a href="http://localhost/hms/unavailables">Unavailables</a></li>
+                    </ul>
+                                                    <ul class="nav navbar-nav">
+                        <li ><a href="http://localhost/hms/coupons">Coupons</a></li>
+                    </ul>
+                                <ul class="nav navbar-nav">
+                    <li ><a href="http://localhost/hms/reports">Reports</a></li>
+                </ul>
+                                    <ul class="nav navbar-nav">
+                            <li ><a href="http://localhost/taxonomies?type=amenities">Amenities</a></li>
+                    </ul>
+                                                    <ul class="nav navbar-nav">
+                        <li ><a href="http://localhost/hms/settings">Settings</a></li>
+                    </ul>
+                            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</section>
+    
+    <style>
+        .hms-dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 16px;
+        }
+        .hms-stat-card {
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.025);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .hms-circle-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+        }
+        .bg-hms-orange { background-color: #f97316 !important; }
+        .bg-hms-sky { background-color: #0ea5e9 !important; }
+        .bg-hms-blue { background-color: #2563eb !important; }
+        .bg-hms-emerald { background-color: #10b981 !important; }
+        
+        .room-tile {
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .room-tile-booked {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+        }
+        .room-tile-cleaning {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+        .room-tile-available {
+            background-color: #10b981;
+            color: #ffffff;
+        }
+        .room-category-btn {
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: none;
+            margin-bottom: 8px;
+        }
+        .room-category-btn-active {
+            background-color: #2563eb;
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+        }
+        .room-category-btn-inactive {
+            background-color: #f1f5f9;
+            color: #475569;
+        }
+        .room-category-btn-inactive:hover {
+            background-color: #e2e8f0;
+        }
+        
+        /* Modern Trending Capsule Tabs for Sales Graph */
+        .sales-tab-btn-group {
+            position: relative;
+            z-index: 20; /* Ensure click events are never blocked by canvas overlays */
+            display: flex;
+            gap: 6px;
+            background-color: #f8fafc;
+            padding: 4px;
+            border-radius: 9999px;
+            border: 1px solid #e2e8f0;
+        }
+        .sales-tab-btn {
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 700;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            background-color: transparent;
+            color: #64748b;
+            cursor: pointer;
+            outline: none;
+        }
+        .sales-tab-btn:hover {
+            color: #1e293b;
+        }
+        .sales-tab-btn-active {
+            background-color: #2563eb;
+            color: #ffffff !important;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.15);
+        }
+    </style>
+
+    <section class="content no-print tw-bg-slate-50 tw-min-h-screen tw-p-6">
+        <div class="row">
+            <!-- Left Main Column (Overview, Stats, Room Availability Grid, Activity & Sells Graph) -->
+            <div class="col-md-9">
+                <!-- Header block -->
+                <div class="tw-flex tw-items-center tw-justify-between tw-mb-8">
+                    <div>
+                        <h1 class="tw-text-2xl tw-font-bold tw-text-slate-800">Overview</h1>
+                        <p class="tw-text-sm tw-text-slate-500">Whole data about Business</p>
+                    </div>
+                </div>
+
+                <!-- Modern 4 Stat Cards Deck -->
+                <div class="row tw-mb-8">
+                    <!-- Today Arrival -->
+                    <div class="col-md-3">
+                        <div class="hms-stat-card">
+                            <div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+                                <div class="hms-circle-icon bg-hms-orange">
+                                    <svg class="tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h3a3 3 0 013 3v1"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="tw-text-xs tw-font-bold tw-text-slate-400 tw-uppercase tw-tracking-wider">Today Arrival</span>
+                            <div class="tw-flex tw-items-baseline tw-gap-2 tw-mt-2">
+                                <span class="tw-text-2xl tw-font-bold tw-text-slate-800">0</span>
+                                <span class="tw-text-xs tw-text-emerald-500 tw-font-bold tw-flex tw-items-center">▲ 0%</span>
+                            </div>
+                            <span class="tw-text-xs tw-text-slate-400 tw-mt-1">VS Yesterday</span>
+                        </div>
+                    </div>
+
+                    <!-- Today Departure -->
+                    <div class="col-md-3">
+                        <div class="hms-stat-card">
+                            <div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+                                <div class="hms-circle-icon bg-hms-sky">
+                                    <svg class="tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h3a3 3 0 013 3v1"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="tw-text-xs tw-font-bold tw-text-slate-400 tw-uppercase tw-tracking-wider">Today Departure</span>
+                            <div class="tw-flex tw-items-baseline tw-gap-2 tw-mt-2">
+                                <span class="tw-text-2xl tw-font-bold tw-text-slate-800">0</span>
+                                <span class="tw-text-xs tw-text-slate-400 tw-font-bold">-</span>
+                            </div>
+                            <span class="tw-text-xs tw-text-slate-400 tw-mt-1">Scheduled Today</span>
+                        </div>
+                    </div>
+
+                    <!-- Total Booked -->
+                    <div class="col-md-3">
+                        <div class="hms-stat-card">
+                            <div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+                                <div class="hms-circle-icon bg-hms-blue">
+                                    <svg class="tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="tw-text-xs tw-font-bold tw-text-slate-400 tw-uppercase tw-tracking-wider">Total Booked</span>
+                            <div class="tw-flex tw-items-baseline tw-gap-2 tw-mt-2">
+                                <span class="tw-text-2xl tw-font-bold tw-text-slate-800">0</span>
+                                <span class="tw-text-xs tw-text-indigo-500 tw-font-bold tw-flex tw-items-center">Active</span>
+                            </div>
+                            <span class="tw-text-xs tw-text-slate-400 tw-mt-1">Confirmed Bookings</span>
+                        </div>
+                    </div>
+
+                    <!-- Available Rooms -->
+                    <div class="col-md-3">
+                        <div class="hms-stat-card">
+                            <div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+                                <div class="hms-circle-icon bg-hms-emerald">
+                                    <svg class="tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="tw-text-xs tw-font-bold tw-text-slate-400 tw-uppercase tw-tracking-wider">Available Rooms</span>
+                            <div class="tw-flex tw-items-baseline tw-gap-2 tw-mt-2">
+                                <span class="tw-text-2xl tw-font-bold tw-text-slate-800">3</span>
+                                <span class="tw-text-xs tw-text-emerald-500 tw-font-bold tw-flex tw-items-center">100% Free</span>
+                            </div>
+                            <span class="tw-text-xs tw-text-slate-400 tw-mt-1">Occupancy: 0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Availability Component (Left Panel filter + Grid + Legend) -->
+                <div class="tw-bg-white tw-p-6 tw-rounded-2xl tw-shadow-sm tw-border tw-border-slate-200/50 tw-mb-8">
+                    <div class="row">
+                        <!-- Left Side: Room Categories list -->
+                        <div class="col-md-3 tw-border-r tw-border-slate-100">
+                            <div class="tw-flex tw-flex-col">
+                                                                                                        <a href="?room_type_id=1" 
+                                       class="room-category-btn room-category-btn-active">
+                                        Luxury room
+                                    </a>
+                                                            </div>
+                        </div>
+
+                        <!-- Right Side: Legend & Dynamic Room Grid -->
+                        <div class="col-md-9 tw-pl-6">
+                            <!-- Legend -->
+                            <div class="tw-flex tw-items-center tw-gap-6 tw-mb-6 tw-text-xs tw-font-semibold tw-text-slate-500">
+                                <div class="tw-flex tw-items-center tw-gap-2">
+                                    <span class="tw-w-3 tw-h-3 tw-bg-slate-100 tw-border tw-border-slate-300 tw-rounded-full"></span>
+                                    <span>Confirmed Rooms</span>
+                                </div>
+                                <div class="tw-flex tw-items-center tw-gap-2">
+                                    <span class="tw-w-3 tw-h-3 tw-bg-emerald-500 tw-rounded-full"></span>
+                                    <span>Available Rooms</span>
+                                </div>
+                                <div class="tw-flex tw-items-center tw-gap-2">
+                                    <span class="tw-w-3 tw-h-3 tw-bg-rose-500 tw-rounded-full"></span>
+                                    <span>Cleaning Room</span>
+                                </div>
+                            </div>
+
+                            <!-- Room Grid Layout -->
+                            <div class="hms-dashboard-grid">
+                                                                    
+                                                                            <!-- Available Room -->
+                                        <div class="room-tile room-tile-available">
+                                            <svg class="tw-w-6 tw-h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                                            </svg>
+                                            <span class="tw-text-xs tw-font-bold tw-mt-2">#01</span>
+                                        </div>
+                                                                                                        
+                                                                            <!-- Available Room -->
+                                        <div class="room-tile room-tile-available">
+                                            <svg class="tw-w-6 tw-h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                                            </svg>
+                                            <span class="tw-text-xs tw-font-bold tw-mt-2">#02</span>
+                                        </div>
+                                                                                                        
+                                                                            <!-- Available Room -->
+                                        <div class="room-tile room-tile-available">
+                                            <svg class="tw-w-6 tw-h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                                            </svg>
+                                            <span class="tw-text-xs tw-font-bold tw-mt-2">#03</span>
+                                        </div>
+                                                                                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bookings & Original Graph Areas -->
+                <div class="row tw-mb-8">
+                    <!-- Tabbed Booking Lists -->
+                    <div class="col-md-7">
+                        <div class="tw-bg-white tw-p-5 tw-rounded-2xl tw-shadow-sm tw-border tw-border-slate-200/50">
+                            <div class="tw-border-b tw-border-slate-100 tw-mb-4">
+                                <ul class="tw-flex tw-flex-wrap tw-text-xs tw-font-bold tw-text-slate-500 tw-gap-4">
+                                    <li class="active">
+                                        <a href="#cn_1" data-toggle="tab" class="tw-inline-block tw-pb-3 tw-border-b-2 tw-border-blue-600 tw-text-blue-600">
+                                            Arrivals                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#cn_2" data-toggle="tab" class="tw-inline-block tw-pb-3 tw-border-b-2 tw-border-transparent hover:tw-text-slate-700 hover:tw-border-slate-300">
+                                            Departures                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#cn_3" data-toggle="tab" class="tw-inline-block tw-pb-3 tw-border-b-2 tw-border-transparent hover:tw-text-slate-700 hover:tw-border-slate-300">
+                                            Latest                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="cn_1">
+                                    <div class="tw-space-y-3">
+                                                                                    <div class="tw-text-center tw-text-slate-400 tw-py-6 tw-text-xs">No arrivals today.</div>
+                                                                            </div>
+                                </div>
+                                <div class="tab-pane" id="cn_2">
+                                    <div class="tw-space-y-3">
+                                                                                    <div class="tw-text-center tw-text-slate-400 tw-py-6 tw-text-xs">No departures today.</div>
+                                                                            </div>
+                                </div>
+                                <div class="tab-pane" id="cn_3">
+                                    <div class="tw-space-y-3">
+                                                                                    <div class="tw-p-4 tw-bg-slate-50 tw-rounded-xl tw-border tw-border-slate-100 tw-transition-all hover:tw-bg-slate-100/70">
+    <div class="tw-flex tw-items-start tw-justify-between">
+        <div>
+            <h5 class="tw-font-bold tw-text-gray-900 tw-text-sm">
+                ID: <span class="tw-text-indigo-600 tw-font-semibold">2026/0002</span>
+            </h5>
+            <p class="tw-text-sm tw-font-semibold tw-text-gray-800 tw-mt-1">Walk-In Customer</p>
+            <p class="tw-text-xs tw-text-gray-500 tw-flex tw-items-center tw-gap-1 tw-mt-0.5">
+                <svg class="tw-w-3.5 tw-h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                
+            </p>
+        </div>
+        <div>
+                            <span class="tw-text-xs tw-font-bold tw-bg-emerald-100 tw-text-emerald-800 tw-px-2.5 tw-py-1 tw-rounded-full">Confirmed</span>
+                    </div>
+    </div>
+    <div class="tw-mt-3 tw-pt-3 tw-border-t tw-border-slate-200/50 tw-flex tw-items-center tw-gap-1.5 tw-text-xs tw-text-slate-500">
+        <svg class="tw-w-4 tw-h-4 tw-text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span class="tw-font-medium">Stay:</span>
+        <span> 21:51</span>
+        <span>-</span>
+        <span> 21:51</span>
+    </div>
+</div>                                                                                    <div class="tw-p-4 tw-bg-slate-50 tw-rounded-xl tw-border tw-border-slate-100 tw-transition-all hover:tw-bg-slate-100/70">
+    <div class="tw-flex tw-items-start tw-justify-between">
+        <div>
+            <h5 class="tw-font-bold tw-text-gray-900 tw-text-sm">
+                ID: <span class="tw-text-indigo-600 tw-font-semibold">2026/0001</span>
+            </h5>
+            <p class="tw-text-sm tw-font-semibold tw-text-gray-800 tw-mt-1">Walk-In Customer</p>
+            <p class="tw-text-xs tw-text-gray-500 tw-flex tw-items-center tw-gap-1 tw-mt-0.5">
+                <svg class="tw-w-3.5 tw-h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                
+            </p>
+        </div>
+        <div>
+                            <span class="tw-text-xs tw-font-bold tw-bg-amber-100 tw-text-amber-800 tw-px-2.5 tw-py-1 tw-rounded-full">Pending</span>
+                    </div>
+    </div>
+    <div class="tw-mt-3 tw-pt-3 tw-border-t tw-border-slate-200/50 tw-flex tw-items-center tw-gap-1.5 tw-text-xs tw-text-slate-500">
+        <svg class="tw-w-4 tw-h-4 tw-text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span class="tw-font-medium">Stay:</span>
+        <span> 19:06</span>
+        <span>-</span>
+        <span> 19:06</span>
+    </div>
+</div>                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Booking Charts (Original Booking Charts Kept Unchanged) -->
+                    <div class="col-md-5">
+                        <div class="tw-bg-white tw-p-5 tw-rounded-2xl tw-shadow-sm tw-border tw-border-slate-200/50">
+                            <div class="tw-border-b tw-border-slate-100 tw-mb-4">
+                                <ul class="tw-flex tw-text-xs tw-font-bold tw-text-slate-500 tw-gap-2">
+                                    <li class="active">
+                                        <a href="#chat_1" data-toggle="tab" class="tw-inline-block tw-pb-3 tw-border-b-2 tw-border-blue-600 tw-text-blue-600">
+                                            Upcoming Bookings                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#chat_2" data-toggle="tab" class="tw-inline-block tw-pb-3 tw-border-b-2 tw-border-transparent hover:tw-text-slate-700 hover:tw-border-slate-300">
+                                            Past Booking                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="chat_1">
+                                    <div class="tw-overflow-hidden">
+                                        <div id="gkvrxlbtfeopmzaysudwcqjnh"  style='height: 400px !important;' >
+</div>
+<div id="gkvrxlbtfeopmzaysudwcqjnh_loader" style="
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    align-items: center;
+    height: 400px;
+    
+">
+    <svg width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
+                <stop stop-color="#22292F" stop-opacity="0" offset="0%"/>
+                <stop stop-color="#22292F" stop-opacity=".631" offset="63.146%"/>
+                <stop stop-color="#22292F" offset="100%"/>
+            </linearGradient>
+        </defs>
+        <g fill="none" fill-rule="evenodd">
+            <g transform="translate(1 1)">
+                <path d="M36 18c0-9.94-8.06-18-18-18" id="Oval-2" stroke="url(#a)" stroke-width="2">
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 18 18"
+                        to="360 18 18"
+                        dur="0.9s"
+                        repeatCount="indefinite" />
+                </path>
+                <circle fill="#22292F" cx="36" cy="18" r="1">
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 18 18"
+                        to="360 18 18"
+                        dur="0.9s"
+                        repeatCount="indefinite" />
+                </circle>
+            </g>
+        </g>
+    </svg>
+</div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="chat_2">
+                                    <div class="tw-overflow-hidden">
+                                        <div id="suivwebnhloazrqxcgyjpfkdt"  style='height: 400px !important;' >
+</div>
+<div id="suivwebnhloazrqxcgyjpfkdt_loader" style="
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    align-items: center;
+    height: 400px;
+    
+">
+    <svg width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
+                <stop stop-color="#22292F" stop-opacity="0" offset="0%"/>
+                <stop stop-color="#22292F" stop-opacity=".631" offset="63.146%"/>
+                <stop stop-color="#22292F" offset="100%"/>
+            </linearGradient>
+        </defs>
+        <g fill="none" fill-rule="evenodd">
+            <g transform="translate(1 1)">
+                <path d="M36 18c0-9.94-8.06-18-18-18" id="Oval-2" stroke="url(#a)" stroke-width="2">
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 18 18"
+                        to="360 18 18"
+                        dur="0.9s"
+                        repeatCount="indefinite" />
+                </path>
+                <circle fill="#22292F" cx="36" cy="18" r="1">
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 18 18"
+                        to="360 18 18"
+                        dur="0.9s"
+                        repeatCount="indefinite" />
+                </circle>
+            </g>
+        </g>
+    </svg>
+</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row for Sales Graph with Toggle and Custom Filter -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tw-bg-white tw-p-6 tw-rounded-2xl tw-shadow-sm tw-border tw-border-slate-200/50">
+                            <div class="tw-flex tw-items-center tw-justify-between tw-border-b tw-border-slate-100 tw-pb-4 tw-mb-4">
+                                <h4 class="tw-text-xs tw-font-bold tw-text-slate-800">Sales Graph</h4>
+                                <!-- Interactive capsule buttons with high z-index to stay clickable -->
+                                <div class="sales-tab-btn-group">
+                                    <button onclick="window.updateSalesChart('today')" class="sales-tab-btn sales-tab-btn-active" id="btn-sales-today">Today</button>
+                                    <button onclick="window.updateSalesChart('yesterday')" class="sales-tab-btn" id="btn-sales-yesterday">Yesterday</button>
+                                    <button onclick="window.updateSalesChart('week')" class="sales-tab-btn" id="btn-sales-week">Week</button>
+                                    <button onclick="window.updateSalesChart('month')" class="sales-tab-btn" id="btn-sales-month">Month</button>
+                                    <button onclick="window.updateSalesChart('year')" class="sales-tab-btn" id="btn-sales-year">Year</button>
+                                    <button onclick="window.updateSalesChart('custom')" class="sales-tab-btn" id="btn-sales-custom">Custom</button>
+                                </div>
+                            </div>
+
+                            <!-- Custom date filter inputs -->
+                            <div id="custom-date-range-inputs" style="display: none; margin-bottom: 15px;" class="tw-flex tw-items-center tw-gap-2">
+                                <input type="date" id="sales-start-date" class="form-control input-sm" style="width: 140px; display: inline-block;" value="2026-07-16">
+                                <span class="tw-text-xs tw-text-slate-500">to</span>
+                                <input type="date" id="sales-end-date" class="form-control input-sm" style="width: 140px; display: inline-block;" value="2026-07-23">
+                                <button onclick="window.applyCustomSalesFilter()" class="btn btn-primary btn-sm">Apply Filter</button>
+                            </div>
+                            
+                            <!-- Container with absolute style to prevent canvas overlaps -->
+                            <div style="position: relative; width:100%; height:250px;">
+                                <canvas id="salesChartCanvas" style="height: 250px; width: 100%;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column (Customer Satisfaction, Staff Schedule) -->
+            <div class="col-md-3">
+                <!-- Customer Satisfaction Card -->
+                <div class="tw-bg-white tw-p-6 tw-rounded-2xl tw-shadow-sm tw-border tw-border-slate-200/50 tw-mb-8 tw-text-center">
+                    <h4 class="tw-text-sm tw-font-bold tw-text-slate-800 tw-mb-6">Customers Satisfaction</h4>
+                    
+                    <!-- Progress Donut Component -->
+                    <div class="tw-relative tw-w-32 tw-h-32 tw-mx-auto tw-flex tw-items-center tw-justify-center tw-mb-6">
+                        <svg class="tw-w-full tw-h-full" viewBox="0 0 36 36">
+                            <path class="tw-text-slate-100" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="tw-text-blue-500" stroke-dasharray="90, 100" stroke-width="3" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="tw-absolute tw-text-center">
+                            <span class="tw-text-3xl tw-font-bold tw-text-slate-800">4.5</span>
+                        </div>
+                    </div>
+
+                    <p class="tw-text-xs tw-text-slate-400 tw-leading-relaxed tw-mb-6">
+                        Overall feedback from guests staying at the hotel this week. Maintain premium customer services.
+                    </p>
+
+                    <button class="tw-w-full tw-py-3 tw-bg-blue-600 tw-text-white tw-font-semibold tw-rounded-xl tw-shadow-md hover:tw-bg-blue-700 tw-transition-all tw-text-sm">
+                        Customers Review
+                    </button>
+                </div>
+
+                <!-- Staff Schedule Card -->
+                <div class="tw-bg-white tw-p-6 tw-rounded-2xl tw-shadow-sm tw-border tw-border-slate-200/50">
+                    <h4 class="tw-text-sm tw-font-bold tw-text-slate-800 tw-mb-6">Staff Schedule</h4>
+
+                    <!-- Top horizontal scrolling profiles avatar list -->
+                    <div class="tw-flex tw-items-center tw-justify-between tw-mb-6 tw-bg-slate-50 tw-p-3 tw-rounded-xl tw-border tw-border-slate-100">
+                        <span class="tw-text-blue-500 tw-cursor-pointer">◀</span>
+                        <div class="tw-flex tw-gap-2">
+                                                            <div class="tw-w-8 tw-h-8 tw-bg-indigo-100 tw-text-indigo-600 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-bold" title="Mr Yuvanshan Prabakaran">
+                                    YP
+                                </div>
+                                                            <div class="tw-w-8 tw-h-8 tw-bg-indigo-100 tw-text-indigo-600 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-bold" title="Mr Admin User">
+                                    AU
+                                </div>
+                                                    </div>
+                        <span class="tw-text-blue-500 tw-cursor-pointer">▶</span>
+                    </div>
+
+                    <!-- Staff status list cards -->
+                    <div class="tw-space-y-4">
+                                                    <div class="tw-p-3 tw-bg-slate-50 tw-rounded-xl tw-border tw-border-slate-100 tw-flex tw-items-center tw-justify-between">
+                                <div class="tw-flex tw-items-center tw-gap-3">
+                                    <div class="tw-w-9 tw-h-9 tw-bg-slate-200 tw-text-slate-700 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-bold">
+                                        Y
+                                    </div>
+                                    <div class="tw-flex tw-flex-col">
+                                        <span class="tw-text-xs tw-font-bold tw-text-slate-800">Mr Yuvanshan Prabakaran</span>
+                                        <span class="tw-text-[10px] tw-text-emerald-500 tw-font-bold">Available</span>
+                                    </div>
+                                </div>
+                                <div class="tw-flex tw-gap-1">
+                                    <!-- message icon -->
+                                    <button class="tw-p-1.5 tw-bg-blue-100 tw-text-blue-600 tw-rounded-lg" title="Message">
+                                        <svg class="tw-w-3.5 tw-h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                        </svg>
+                                    </button>
+                                    <!-- call icon -->
+                                    <button class="tw-p-1.5 tw-bg-blue-100 tw-text-blue-600 tw-rounded-lg" title="Call">
+                                        <svg class="tw-w-3.5 tw-h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                                                    <div class="tw-p-3 tw-bg-slate-50 tw-rounded-xl tw-border tw-border-slate-100 tw-flex tw-items-center tw-justify-between">
+                                <div class="tw-flex tw-items-center tw-gap-3">
+                                    <div class="tw-w-9 tw-h-9 tw-bg-slate-200 tw-text-slate-700 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-bold">
+                                        A
+                                    </div>
+                                    <div class="tw-flex tw-flex-col">
+                                        <span class="tw-text-xs tw-font-bold tw-text-slate-800">Mr Admin User</span>
+                                        <span class="tw-text-[10px] tw-text-emerald-500 tw-font-bold">Available</span>
+                                    </div>
+                                </div>
+                                <div class="tw-flex tw-gap-1">
+                                    <!-- message icon -->
+                                    <button class="tw-p-1.5 tw-bg-blue-100 tw-text-blue-600 tw-rounded-lg" title="Message">
+                                        <svg class="tw-w-3.5 tw-h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                        </svg>
+                                    </button>
+                                    <!-- call icon -->
+                                    <button class="tw-p-1.5 tw-bg-blue-100 tw-text-blue-600 tw-rounded-lg" title="Call">
+                                        <svg class="tw-w-3.5 tw-h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                                
+                    <div class="tw-mt-auto">
+  <div class="tw-mb-4 tw-ms-8 -tw-mt-1 no-print">
+    <p class="tw-text-xs tw-font-normal tw-text-gray-500">
+      Mahdev (Pvt) Ltd V 1.8.2 | Copyright &copy; 2026 All rights reserved.
+    </p>
+  </div>
+</div>                            </div>
+            <div class='scrolltop no-print'>
+                <div class='scroll icon'><i class="fas fa-angle-up"></i></div>
+            </div>
+
+            
+            <!-- This will be printed -->
+            <section class="invoice print_section" id="receipt_section">
+            </section>
+        </main>
+
+        <div class="modal fade" id="todays_profit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Today's profit</h4>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="modal_today" value="2026-07-23">
+        <div class="row">
+          <div id="todays_profit">
+          </div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="tw-dw-btn tw-dw-btn-neutral tw-text-white" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>        <!-- /.content-wrapper -->
+
+
+
+        <audio id="success-audio">
+            <source src="http://localhost/audio/success.ogg?v=681" type="audio/ogg">
+            <source src="http://localhost/audio/success.mp3?v=681" type="audio/mpeg">
+        </audio>
+        <audio id="error-audio">
+            <source src="http://localhost/audio/error.ogg?v=681" type="audio/ogg">
+            <source src="http://localhost/audio/error.mp3?v=681" type="audio/mpeg">
+        </audio>
+        <audio id="warning-audio">
+            <source src="http://localhost/audio/warning.ogg?v=681" type="audio/ogg">
+            <source src="http://localhost/audio/warning.mp3?v=681" type="audio/mpeg">
+        </audio>
+
+                    <div class="modal fade" id="task_modal" tabindex="-1" role="dialog" 
+        aria-labelledby="gridSystemModalLabel">
+        </div>
+        
+        <script type="text/javascript">
+    base_path = "http://localhost";
+    //used for push notification
+    APP = {};
+    APP.PUSHER_APP_KEY = '';
+    APP.PUSHER_APP_CLUSTER = '';
+    APP.INVOICE_SCHEME_SEPARATOR = '-';
+    //variable from app service provider
+    APP.PUSHER_ENABLED = '';
+            APP.USER_ID = "1";
+    </script>
+
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js?v=$asset_v"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js?v=$asset_v"></script>
+<![endif]-->
+
+<script src="http://localhost/js/vendor.js?v=681"></script>
+
+    <script src="http://localhost/js/lang/en.js?v=681">
+    </script>
+
+<script>
+    Dropzone.autoDiscover = false;
+    moment.tz.setDefault('');
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+                    $.fn.dataTable.ext.errMode = 'throw';
+            });
+
+    var financial_year = {
+        start: moment(''),
+        end: moment(''),
+    }
+    
+    var datepicker_date_format = "mm/dd/yyyy";
+    var moment_date_format = "MM/DD/YYYY";
+    var moment_time_format = "HH:mm";
+
+    var app_locale = "en";
+
+    var non_utf8_languages = [
+                    "ar",
+                    "hi",
+                    "ps",
+            ];
+
+    var __default_datatable_page_entries = "25";
+
+    var __new_notification_count_interval = "60000";
+</script>
+
+    <script src="http://localhost/js/lang/en.js?v=681">
+    </script>
+
+<script src="http://localhost/js/functions.js?v=681"></script>
+<script src="http://localhost/js/common.js?v=681"></script>
+<script src="http://localhost/js/app.js?v=681"></script>
+<script src="http://localhost/js/help-tour.js?v=681"></script>
+<script src="http://localhost/js/documents_and_note.js?v=681"></script>
+
+<!-- TODO -->
+
+    
+            <script type="text/javascript">
+                $(document).on("ifChecked", ".allow_login", function(){
+                    $("#" + $(this).attr("data-loginDiv")).removeClass("hide");
+                })
+                $(document).on("ifUnchecked", ".allow_login", function(){
+                    $("#" + $(this).attr("data-loginDiv")).addClass("hide");
+                })
+                $(document).on("contactFormvalidationAdded", "#contact_add_form", function(e) {
+
+                    $("#contact_add_form .input-icheck").iCheck({
+                        checkboxClass: "icheckbox_square-blue"
+                    });
+
+                    if($("#username0").length) {
+                        $( "#username0" ).rules( "add", {
+                            minlength: 5,
+                            remote: {
+                                url: "/business/register/check-username",
+                                type: "post",
+                                data: {
+                                    username: function() {
+                                        return $( "#username0" ).val();
+                                    }
+                                }
+                            },
+                            messages: {
+                                remote: "Invalid username or User already exist"
+                            }
+                        });
+                    }
+
+                    if($("#username1").length) {
+                        $( "#username1" ).rules( "add", {
+                            minlength: 5,
+                            remote: {
+                                url: "/business/register/check-username",
+                                type: "post",
+                                data: {
+                                    username: function() {
+                                        return $( "#username1" ).val();
+                                    }
+                                }
+                            },
+                            messages: {
+                                remote: "Invalid username or User already exist"
+                            }
+                        });
+                    }
+
+                    if($("#username2").length) {
+                        $( "#username2" ).rules( "add", {
+                            minlength: 5,
+                            remote: {
+                                url: "/business/register/check-username",
+                                type: "post",
+                                data: {
+                                    username: function() {
+                                        return $( "#username2" ).val();
+                                    }
+                                }
+                            },
+                            messages: {
+                                remote: "Invalid username or User already exist"
+                            }
+                        });
+                    }
+                });
+            </script>
+        
+    <script  type="text/javascript">
+    function gkvrxlbtfeopmzaysudwcqjnh_create(data) {
+        gkvrxlbtfeopmzaysudwcqjnh_rendered = true;
+        document.getElementById("gkvrxlbtfeopmzaysudwcqjnh_loader").style.display = 'none';
+        window.gkvrxlbtfeopmzaysudwcqjnh = new Highcharts.Chart("gkvrxlbtfeopmzaysudwcqjnh", {
+            series: data,
+            "credits":{"enabled":false},"title":{"text":null},"yAxis":{"title":{"text":"Bookings"}},"legend":{"align":"right","verticalAlign":"top","floating":true,"layout":"vertical","padding":20},"xAxis":{"categories":["23 Jul 2026","24 Jul 2026","25 Jul 2026","26 Jul 2026","27 Jul 2026","28 Jul 2026","29 Jul 2026"]}
+        });
+    }
+        let gkvrxlbtfeopmzaysudwcqjnh_rendered = false;
+let gkvrxlbtfeopmzaysudwcqjnh_load = function () {
+    if (document.getElementById("gkvrxlbtfeopmzaysudwcqjnh") && !gkvrxlbtfeopmzaysudwcqjnh_rendered) {
+                    gkvrxlbtfeopmzaysudwcqjnh_create([{"data":[0,0,0,0,0,0,0],"name":"Bookings","type":"line"}])
+            }
+};
+window.addEventListener("load", gkvrxlbtfeopmzaysudwcqjnh_load);
+document.addEventListener("turbolinks:load", gkvrxlbtfeopmzaysudwcqjnh_load);
+</script>
+
+    <script  type="text/javascript">
+    function suivwebnhloazrqxcgyjpfkdt_create(data) {
+        suivwebnhloazrqxcgyjpfkdt_rendered = true;
+        document.getElementById("suivwebnhloazrqxcgyjpfkdt_loader").style.display = 'none';
+        window.suivwebnhloazrqxcgyjpfkdt = new Highcharts.Chart("suivwebnhloazrqxcgyjpfkdt", {
+            series: data,
+            "credits":{"enabled":false},"title":{"text":null},"yAxis":{"title":{"text":"Bookings"}},"legend":{"align":"right","verticalAlign":"top","floating":true,"layout":"vertical","padding":20},"xAxis":{"categories":["16 Jul 2026","17 Jul 2026","18 Jul 2026","19 Jul 2026","20 Jul 2026","21 Jul 2026","22 Jul 2026"]}
+        });
+    }
+        let suivwebnhloazrqxcgyjpfkdt_rendered = false;
+let suivwebnhloazrqxcgyjpfkdt_load = function () {
+    if (document.getElementById("suivwebnhloazrqxcgyjpfkdt") && !suivwebnhloazrqxcgyjpfkdt_rendered) {
+                    suivwebnhloazrqxcgyjpfkdt_create([{"data":[0,0,1,1,1,0,0],"name":"Bookings","type":"line"}])
+            }
+};
+window.addEventListener("load", suivwebnhloazrqxcgyjpfkdt_load);
+document.addEventListener("turbolinks:load", suivwebnhloazrqxcgyjpfkdt_load);
+</script>
+
+
+    <script>
+        // Register updateSalesChart globally immediately so it is clickable right away
+        window.updateSalesChart = function(period) {
+            // Check if chart is initialized
+            if (!window.mySalesChart) return;
+            
+            // Update button styles
+            document.querySelectorAll('.sales-tab-btn').forEach(function(btn) {
+                btn.classList.remove('sales-tab-btn-active');
+            });
+            document.getElementById('btn-sales-' + period).classList.add('sales-tab-btn-active');
+
+            if (period === 'custom') {
+                document.getElementById('custom-date-range-inputs').style.display = 'flex';
+            } else {
+                document.getElementById('custom-date-range-inputs').style.display = 'none';
+                // Update chart data
+                window.mySalesChart.data.labels = window.salesChartData[period].labels;
+                window.mySalesChart.data.datasets[0].data = window.salesChartData[period].data;
+                window.mySalesChart.update();
+            }
+        };
+
+        window.applyCustomSalesFilter = function() {
+            if (!window.mySalesChart) return;
+            var start = document.getElementById('sales-start-date').value;
+            var end = document.getElementById('sales-end-date').value;
+            if (!start || !end) return;
+
+            var startMs = new Date(start).getTime();
+            var endMs = new Date(end).getTime();
+
+            // Group transactions by date in range
+            var customData = {};
+            var currentDate = new Date(start);
+            var endLimit = new Date(end);
+            
+            while (currentDate <= endLimit) {
+                var dateStr = currentDate.toISOString().split('T')[0];
+                customData[dateStr] = 0;
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            var rawTx = [{"date":"2026-05-12","total":"100.0000"},{"date":"2026-07-18","total":"22000.0000"}];
+            rawTx.forEach(function(tx) {
+                var txDate = tx.date;
+                var txMs = new Date(txDate).getTime();
+                if (txMs >= startMs && txMs <= endMs) {
+                    if (customData[txDate] !== undefined) {
+                        customData[txDate] += parseFloat(tx.total);
+                    } else {
+                        customData[txDate] = parseFloat(tx.total);
+                    }
+                }
+            });
+
+            var labels = Object.keys(customData);
+            var data = Object.values(customData);
+
+            window.mySalesChart.data.labels = labels;
+            window.mySalesChart.data.datasets[0].data = data;
+            window.mySalesChart.update();
+        };
+
+        // Polling chart initializer to prevent "Chart is not defined" error
+        function initSalesChart() {
+            if (typeof Chart === 'undefined') {
+                setTimeout(initSalesChart, 100);
+                return;
+            }
+            
+            window.salesChartData = {
+                today: {
+                    labels: ["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]                },
+                yesterday: {
+                    labels: ["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]                },
+                week: {
+                    labels: ["Fri","Sat","Sun","Mon","Tue","Wed","Thu"],
+                    data: [0,22000,0,0,0,0,0]                },
+                month: {
+                    labels: ["24 Jun","25 Jun","26 Jun","27 Jun","28 Jun","29 Jun","30 Jun","01 Jul","02 Jul","03 Jul","04 Jul","05 Jul","06 Jul","07 Jul","08 Jul","09 Jul","10 Jul","11 Jul","12 Jul","13 Jul","14 Jul","15 Jul","16 Jul","17 Jul","18 Jul","19 Jul","20 Jul","21 Jul","22 Jul","23 Jul"],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22000,0,0,0,0,0]                },
+                year: {
+                    labels: ["Aug 2025","Sep 2025","Oct 2025","Nov 2025","Dec 2025","Jan 2026","Feb 2026","Mar 2026","Apr 2026","May 2026","Jun 2026","Jul 2026"],
+                    data: [0,0,0,0,0,0,0,0,0,100,0,22000]                }
+            };
+
+            var ctx = document.getElementById('salesChartCanvas').getContext('2d');
+            
+            // Modern premium gradient background for trending style
+            var gradient = ctx.createLinearGradient(0, 0, 0, 250);
+            gradient.addColorStop(0, 'rgba(37, 99, 235, 0.25)');
+            gradient.addColorStop(1, 'rgba(37, 99, 235, 0)');
+
+            window.mySalesChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: window.salesChartData.today.labels,
+                    datasets: [{
+                        label: 'Sales Amount',
+                        data: window.salesChartData.today.data,
+                        backgroundColor: gradient,
+                        borderColor: '#2563eb',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#2563eb',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 1.5,
+                        pointRadius: 3.5,
+                        pointHoverRadius: 5.5,
+                        tension: 0.35,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: false // Clean trending style
+                    },
+                    scales: {
+                        yAxes: [{
+                            gridLines: {
+                                color: '#f1f5f9',
+                                zeroLineColor: '#f1f5f9'
+                            },
+                            ticks: {
+                                beginAtZero: true,
+                                suggestedMax: 100, // Show structured 0-level graph when data is empty
+                                fontColor: '#94a3b8',
+                                fontSize: 10
+                            }
+                        }],
+                        xAxes: [{
+                            gridLines: {
+                                display: false
+                            },
+                            ticks: {
+                                fontColor: '#94a3b8',
+                                fontSize: 10
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initSalesChart();
+        });
+    </script>
+
+    <div class="modal fade" id="clock_in_clock_out_modal" tabindex="-1" role="dialog" 
+        aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+	  <div class="modal-content">
+
+	    <form method="POST" action="http://localhost/hrm/clock-in-clock-out" accept-charset="UTF-8" id="clock_in_clock_out_form"><input name="_token" type="hidden" value="jlCTpskpGwpAbYJh3v7jnMiJhY46L2i9a7Uhp7a3">
+	    <div class="modal-header">
+	      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	      	<h4 class="modal-title"><span id="clock_in_text">Clock In</span>
+	      	<span id="clock_out_text">Clock Out</span></h4>
+	    </div>
+	    <div class="modal-body">
+	    	<div class="row">
+	    		<input type="hidden" name="type" id="type">
+		      	<div class="form-group col-md-12">
+		      		<strong>IP Address: </strong>
+		      	</div>
+		      	<div class="form-group col-md-12 clock_in_note ">
+		        	<label for="clock_in_note">Clock in note:</label>
+		        	<textarea class="form-control" placeholder="Clock in note" rows="3" name="clock_in_note" cols="50" id="clock_in_note"></textarea>
+		      	</div>
+		      	<div class="form-group col-md-12 clock_out_note  hide ">
+		        	<label for="clock_out_note">Clock out note:</label>
+		        	<textarea class="form-control" placeholder="Clock out note" rows="3" name="clock_out_note" cols="50" id="clock_out_note"></textarea>
+		      	</div>
+		      	<input type="hidden" name="clock_in_out_location" id="clock_in_out_location" value="">
+	    	</div>
+	    		    </div>
+
+	    <div class="modal-footer">
+	      <button type="submit" class="btn btn-primary">Submit</button>
+	      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    </div>
+
+	    </form>
+
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+        	
+</div><script type="text/javascript">
+	$(document).ready( function(){
+        $('#essentials_dob').datepicker();
+		$('.clock_in_btn, .clock_out_btn').click( function() {
+            var type = $(this).data('type');
+            if (type == 'clock_in') {
+                $('#clock_in_clock_out_modal').find('#clock_in_text').removeClass('hide');
+                $('#clock_in_clock_out_modal').find('#clock_out_text').addClass('hide');
+                $('#clock_in_clock_out_modal').find('.clock_in_note').removeClass('hide');
+                $('#clock_in_clock_out_modal').find('.clock_out_note').addClass('hide');
+            } else if (type == 'clock_out') {
+                $('#clock_in_clock_out_modal').find('#clock_in_text').addClass('hide');
+                $('#clock_in_clock_out_modal').find('#clock_out_text').removeClass('hide');
+                $('#clock_in_clock_out_modal').find('.clock_in_note').addClass('hide');
+                $('#clock_in_clock_out_modal').find('.clock_out_note').removeClass('hide');
+            }
+            $('#clock_in_clock_out_modal').find('input#type').val(type);
+
+            $('#clock_in_clock_out_modal').modal('show');
+        });
+	});
+
+	$(document).on('submit', 'form#clock_in_clock_out_form', function(e) {
+        e.preventDefault();
+        $(this).find('button[type="submit"]').attr('disabled', true);
+        var data = $(this).serialize();
+
+        $.ajax({
+            method: $(this).attr('method'),
+            url: $(this).attr('action'),
+            dataType: 'json',
+            data: data,
+            success: function(result) {
+                if (result.success == true) {
+                    $('div#clock_in_clock_out_modal').modal('hide');
+
+                    var shift_details = document.createElement("div");
+                    if (result.current_shift) {
+                        shift_details.innerHTML = result.current_shift;
+                    }
+
+                    swal({
+                        title: result.msg,
+                        content: shift_details,
+                        icon: 'success'
+                    });
+
+                    if (typeof attendance_table !== 'undefined') {
+                        attendance_table.ajax.reload();
+                    }
+                    if (result.type == 'clock_in') {
+                        $('.clock_in_btn').addClass('hide');
+                        $('.clock_out_btn').removeClass('hide');
+                    } else if(result.type == 'clock_out') {
+                        $('.clock_out_btn').addClass('hide');
+                        $('.clock_in_btn').removeClass('hide');
+                    }
+                } else {
+                    var shift_details = document.createElement("p");
+                    if (result.shift_details) {
+                        shift_details.innerHTML = result.shift_details;
+                    }
+
+                    swal({
+                        title: result.msg,
+                        content: shift_details,
+                        icon: 'error'
+                    })
+                }
+                $('#clock_in_clock_out_form')[0].reset();
+                $('#clock_in_clock_out_form').find('button[type="submit"]').removeAttr('disabled');
+            },
+        });
+    });
+    
+    $(document).on('click', '#get_current_location', function(){
+        getFullAddress();
+    });
+
+    function getFullAddress() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                $.ajax({
+                    url: '/user-location/' + latitude + ',' + longitude,
+                    dataType: 'json',
+                    success: function(result) {
+                        if (typeof result.address !== 'undefined') {
+
+                            $("input#clock_in_out_location").val(result.address);
+                            $("span.clock_in_out_location").text(result.address);
+                            $("div.ask_location").hide();
+                        } else if (typeof result.error_message !== 'undefined') {
+                            console.log(result.error_message);
+                        }
+                    }
+                });
+
+            },
+            () => {
+                $("div.ask_location").show();
+                $("span.location_required").text("Location is required, you must enable location")
+              console.log( "Error: The Geolocation service failed.");
+            }
+          );
+        } else {
+            $("div.ask_location").show();
+            $("span.location_required").text("Location is required, you must enable location")
+          // Browser doesn't support Geolocation
+          console.log("Browser doesn't support Geolocation");
+        }
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var locale = "en";
+        var isRTL =
+                            false;
+            
+        $('#calendar').fullCalendar('option', {
+            locale: locale,
+            isRTL: isRTL
+        });
+        // side bar toggle  
+        $(".drop_down").click(function(event) {
+            event.preventDefault();
+            var $chiled = $(this).next(".chiled");
+            var svgElement = $(this).find(".svg");
+            $(".chiled").not($chiled).slideUp();
+            $chiled.slideToggle(function() {
+                $(".svg").each(function() {
+                    var $currentSvgElement = $(this);
+                    if ($currentSvgElement.closest(".drop_down").next(".chiled").is(
+                            ":visible")) {
+                        // If the corresponding menu is visible, set the arrow pointing upwards
+                        $currentSvgElement.html(
+                            '<path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 9l6 6l6 -6" />'
+                        );
+                    } else {
+                        // Otherwise, set the arrow pointing downwards
+                        $currentSvgElement.html(
+                            '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" />'
+                        );
+                    }
+                });
+            });
+        });
+
+        $('.small-view-button').on('click', function() {
+            $('.side-bar').addClass('small-view-side-active');
+            $('.overlay').fadeIn('slow');
+        });
+
+        $('.overlay').on('click', function() {
+            $('.overlay').fadeOut('slow');
+            $('.side-bar').removeClass('small-view-side-active');
+        });
+
+        $(window).on('resize', function() {
+            if ($(window).width() >= 992) {
+                $('.overlay').fadeOut('slow');
+                $('.side-bar').removeClass('small-view-side-active');
+            }
+
+            if($('.side-bar').hasClass('small-view-side-active')){
+                $('.overlay').fadeIn('slow');
+            }
+        });
+
+        $(document).on('click', function (e) {
+            $('[data-toggle="popover"]').popover();
+
+            $(document).on('click', function (e) {
+                $('[data-toggle="popover"]').each(function () {
+                    // Check if the clicked element is the popover button or inside the popover
+                    if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                        $(this).popover('hide');
+                    }
+                });
+            });
+            
+        });
+
+        $('.side-bar-collapse').click(function() {
+            $('.side-bar').toggle('slow');
+        });
+
+        $('.dt-buttons.btn-group').find('a.btn').removeClass('btn-default');
+        $('.dt-buttons.btn-group').find('a.btn').removeClass('btn');
+        
+        // $('.date_range').on('show.daterangepicker', function (ev, picker) {
+        //     $(picker.container).insertAfter($(this));
+        // });
+   
+    });
+</script>
+
+
+        
+        
+                <div class="modal fade view_modal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel"></div>
+
+                                    <script type="text/javascript">
+	$('#task_modal').on('shown.bs.modal', function() {
+	$('form#task_form .datepicker').datetimepicker({
+        format: moment_date_format + ' ' + moment_time_format,
+        ignoreReadonly: true,
+    });
+    $('form#task_form .select2').select2({ dropdownParent: $(this) });
+
+	tinymce.init({
+        selector: 'textarea#to_do_description',
+    });
+
+	if ($('#media_upload').length) {
+       $(this).find("div#media_upload").dropzone({
+            url: $('#media_upload_url').val(),
+            paramName: 'file',
+            uploadMultiple: true,
+            autoProcessQueue: false,
+            addRemoveLinks: true,
+            params: {
+            	'model_id': $('#model_id').val(),
+            	'model_type': $('#model_type').val(),
+            	'model_media_type': $('#model_media_type').val()
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(file, response) {
+                if (response.success) {
+                    toastr.success(response.msg);
+                    $("#task_modal").modal('hide');
+                } else {
+                    toastr.error(response.msg);
+                }
+            },
+        });
+    }
+
+	 //form validation
+	$("form#task_form").validate();
+});
+
+$('#task_modal').on('hide.bs.modal', function(){
+	tinymce.remove("textarea#to_do_description");
+});
+
+//form submit
+$(document).on('submit', 'form#task_form', function(e){
+	e.preventDefault();
+	var url = $(this).attr("action");
+	var method = $(this).attr("method");
+	var data = $("form#task_form").serialize();
+	var ladda = Ladda.create(document.querySelector('.ladda-button'));
+	ladda.start();
+	$.ajax({
+		method: method,
+		url: url,
+		data: data,
+		dataType: "json",
+		success: function(result){
+			ladda.stop();
+			if(result.success == true){
+				var myDropzone = Dropzone.forElement("#media_upload");
+
+				if (typeof result.todo_id !== 'undefined') {
+					myDropzone.options.params.model_id = result.todo_id;
+				}
+
+                myDropzone.processQueue();
+
+				if (typeof task_table !== 'undefined') {
+					task_table.ajax.reload();
+				}
+
+				if ($('#task_modal').length) {
+					$('#task_modal').modal('hide');
+				}
+
+				if ($('#calendar').length) {
+					$('#calendar').fullCalendar( 'refetchEvents' );
+				}
+			} else {
+				toastr.error(result.msg);
+			}
+		}
+	});
+});
+</script>                            <div id="page_loading_overlay" class="page-loading-overlay" aria-hidden="true">
+            <div class="page-loading-overlay__content" role="status" aria-live="polite">
+                <div class="page-loading-overlay__spinner" aria-hidden="true"></div>
+                <p class="page-loading-overlay__message" data-page-loader-message>Loading...</p>
+            </div>
+        </div>
+        <div>
+
+            <div class="overlay tw-hidden"></div>
+        </div>
+</body>
+<style>
+    @media print {
+  #scrollable-container {
+    overflow: visible !important;
+    height: auto !important;
+  }
+}
+</style>
+<style>
+    .small-view-side-active {
+        display: grid !important;
+        z-index: 1000;
+        position: absolute;
+    }
+    .overlay {
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+        z-index: 20;
+    }
+
+    .tw-dw-btn.tw-dw-btn-xs.tw-dw-btn-outline {
+        width: max-content;
+        margin: 2px;
+    }
+
+    #scrollable-container{
+        position:relative;
+    }
+
+    .page-loading-overlay {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(17, 24, 39, 0.55);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        z-index: 99999;
+    }
+
+    .page-loading-overlay.is-visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .page-loading-overlay__content {
+        min-width: 220px;
+        max-width: 320px;
+        padding: 24px 28px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+        text-align: center;
+    }
+
+    .page-loading-overlay__spinner {
+        width: 42px;
+        height: 42px;
+        margin: 0 auto 14px;
+        border: 4px solid rgba(59, 130, 246, 0.18);
+        border-top-color: #2563eb;
+        border-radius: 50%;
+        animation: page-loading-spin 0.8s linear infinite;
+    }
+
+    .page-loading-overlay__message {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #111827;
+        letter-spacing: 0.01em;
+    }
+
+    body.page-loading-active {
+        cursor: progress;
+    }
+
+    @keyframes page-loading-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    
+
+
+
+</style>
+
+</html>
